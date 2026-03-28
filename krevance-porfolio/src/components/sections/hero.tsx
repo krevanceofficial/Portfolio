@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Zen_Dots } from "next/font/google";
-import earthHero from "../components/images/eartHero.png";
-import mailHero from "../components/images/mailHero.png";
-import penHero from "../components/images/penHero.png";
-import settingHero from "../components/images/settingHero.png";
-import styles from "../styles/hero.module.css";
+import earthHero from "../images/eartHero.png";
+import mailHero from "../images/mailHero.png";
+import penHero from "../images/penHero.png";
+import settingHero from "../images/settingHero.png";
+import styles from "../../styles/hero.module.css";
 
 const zenDots = Zen_Dots({
     weight: "400",

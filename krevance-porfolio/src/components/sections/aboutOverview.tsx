@@ -1,6 +1,6 @@
 import { Zen_Dots } from "next/font/google";
 import { ArrowRight, Lightbulb, ShieldCheck, UserRoundSearch } from "lucide-react";
-import styles from "../styles/about.module.css";
+import styles from "../../styles/about.module.css";
 
 const zenDots = Zen_Dots({
   weight: "400",
