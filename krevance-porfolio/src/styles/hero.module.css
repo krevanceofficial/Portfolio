@@ -1,0 +1,236 @@
+@font-face {
+  font-family: "AvantGarde Bk BT";
+  src:
+    local("AvantGarde Bk BT"),
+    local("AvantGardeBkBT"),
+    local("ITC Avant Garde Gothic");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.heroSection {
+  position: relative;
+  z-index: 10;
+  margin: 4rem 0 0;
+  display: flex;
+  min-height: 70vh;
+  width: 100%;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.decor {
+  pointer-events: none;
+  position: absolute;
+  will-change: transform;
+}
+
+.mail {
+  left: 1.75rem;
+  top: 2rem;
+  opacity: 0.9;
+  animation: heroFloatA 6.8s ease-in-out infinite;
+}
+
+.pen {
+  right: 1.75rem;
+  top: 2rem;
+  opacity: 0.9;
+  animation: heroFloatB 7.6s ease-in-out infinite;
+}
+
+.earth {
+  left: -1rem;
+  bottom: -0.5rem;
+  opacity: 0.85;
+  animation: heroFloatC 8.4s ease-in-out infinite;
+}
+
+.setting {
+  right: -1rem;
+  bottom: -0.5rem;
+  opacity: 0.9;
+  animation: heroFloatD 9.2s ease-in-out infinite;
+}
+
+@keyframes heroFloatA {
+  0%,
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(-1deg); }
+}
+
+@keyframes heroFloatB {
+  0%,
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(1deg); }
+}
+
+@keyframes heroFloatC {
+  0%,
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(-0.6deg); }
+}
+
+@keyframes heroFloatD {
+  0%,
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(0.6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mail,
+  .pen,
+  .earth,
+  .setting {
+    animation: none;
+    transform: none;
+  }
+}
+
+.mailImg {
+  height: 14rem;
+  width: auto;
+}
+
+.penImg {
+  height: 14rem;
+  width: auto;
+}
+
+.earthImg {
+  height: 24rem;
+  width: auto;
+}
+
+.settingImg {
+  height: 24rem;
+  width: auto;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  max-width: 68rem;
+}
+
+.title {
+  text-wrap: balance;
+  font-size: 1.875rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #284032;
+  filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.18));
+}
+
+.subtitle {
+  margin: 1rem auto 0;
+  max-width: 42rem;
+  text-wrap: pretty;
+  font-size: 0.875rem;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  line-height: 1.6;
+  color: #3f5347;
+}
+
+@media (min-width: 640px) {
+  .heroSection {
+    padding: 0 1.5rem;
+  }
+
+  .mail {
+    left: 2rem;
+    top: 1.25rem;
+  }
+
+  .pen {
+    right: 2rem;
+    top: 1.25rem;
+  }
+
+  .earth {
+    left: -0.5rem;
+    bottom: 0;
+  }
+
+  .setting {
+    right: -0.5rem;
+    bottom: 0;
+  }
+
+  .mailImg,
+  .penImg {
+    height: 12rem;
+  }
+
+  .earthImg,
+  .settingImg {
+    height: 22rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mailImg,
+  .penImg {
+    height: 13.5rem;
+  }
+
+  .earth {
+    left: -1.5rem;
+  }
+
+  .setting {
+    right: -1.5rem;
+  }
+
+  .earthImg,
+  .settingImg {
+    height: 27rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroSection {
+    padding: 0 2rem;
+  }
+
+  .mailImg,
+  .penImg {
+    height: 14.5rem;
+  }
+
+  .earth {
+    left: -2.25rem;
+    bottom: -1.5rem;
+  }
+
+  .setting {
+    right: -2.25rem;
+    bottom: -1.5rem;
+  }
+
+  .earthImg,
+  .settingImg {
+    height: 31rem;
+  }
+
+  .title {
+    font-size: 52px;
+  }
+}
