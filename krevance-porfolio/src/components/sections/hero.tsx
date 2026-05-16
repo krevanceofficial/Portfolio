@@ -1,48 +1,60 @@
-import Image from "next/image";
-import { Zen_Dots } from "next/font/google";
-import earthHero from "../images/eartHero.png";
-import mailHero from "../images/mailHero.png";
-import penHero from "../images/penHero.png";
-import settingHero from "../images/settingHero.png";
 import styles from "../../styles/hero.module.css";
-
-const zenDots = Zen_Dots({
-    weight: "400",
-    subsets: ["latin"],
-});
 
 export default function Hero() {
     return (
         <section className={styles.heroSection}>
-            <div className={`${styles.decor} ${styles.mail}`}>
-                <Image src={mailHero} alt="" priority className={styles.mailImg} />
-            </div>
+            <div className={styles.heroInner}>
+                <div className={styles.left}>
+                    <span className={styles.eyebrow}>Digital Agency</span>
+                    <h1 className={styles.title}>
+                        Empowering Visions
+                        <br />
+                        Through Digital
+                        <br />
+                        Innovation
+                    </h1>
 
-            <div className={`${styles.decor} ${styles.pen}`}>
-                <Image src={penHero} alt="" className={styles.penImg} />
-            </div>
+                    <p className={styles.subtitle}>
+                        At Krevance, startups are empowered with smart, creative digital
+                        solutions designed to spark growth and success.
+                    </p>
 
-            <div className={`${styles.decor} ${styles.earth}`}>
-                <Image src={earthHero} alt="" loading="eager" className={styles.earthImg} />
-            </div>
+                    <button type="button" className={styles.cta}>
+                        Talk To Us &gt;
+                    </button>
+                </div>
 
-            <div className={`${styles.decor} ${styles.setting}`}>
-                <Image src={settingHero} alt="" className={styles.settingImg} />
-            </div>
-
-            <div className={styles.content}>
-                <h1
-                    className={`${zenDots.className} ${styles.title}`}
-                >
-                    Where Your Vision Becomes
-                    <br />
-                    A Digital Experience
-                </h1>
-
-                <p className={styles.subtitle}>
-                    At Krevance, startups are empowered with smart, creative digital
-                    solutions designed to spark growth and success.
-                </p>
+                <div className={styles.right}>
+                    <ul className={styles.statsList}>
+                        <li className={styles.statItem}>
+                            <span className={styles.statValue}>80+</span>
+                            <span className={styles.statText}>
+                                <span className={styles.statLabel}>Team Clients</span>
+                                <span className={styles.statNote}>
+                                    Trusted by Growing Businesses
+                                </span>
+                            </span>
+                        </li>
+                        <li className={styles.statItem}>
+                            <span className={styles.statValue}>95%</span>
+                            <span className={styles.statText}>
+                                <span className={styles.statLabel}>Promoting</span>
+                                <span className={styles.statNote}>
+                                    Client Satisfaction Rate
+                                </span>
+                            </span>
+                        </li>
+                        <li className={styles.statItem}>
+                            <span className={styles.statValue}>120+</span>
+                            <span className={styles.statText}>
+                                <span className={styles.statLabel}>Relators</span>
+                                <span className={styles.statNote}>
+                                    Projects Launched Globally
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
     );

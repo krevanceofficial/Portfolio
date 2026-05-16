@@ -1,179 +1,185 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Zen_Dots } from 'next/font/google';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import styles from '../../styles/whatWeDo.module.css';
+import { useState } from "react";
+import styles from "../../styles/whatWeDo.module.css";
 
-const zenDots = Zen_Dots({
-  weight: '400',
-  subsets: ['latin'],
-});
-
-interface Service {
+interface ServiceItem {
   id: string;
-  name: string;
-  description: string;
+  number: string;
+  listTitle: string;
+  listSubtitle: string;
+  detailTitle: string;
+  detailTagline: string;
   price: string;
+  description: string;
   features: string[];
 }
 
-const SERVICES_DATA: Service[] = [
+const SERVICES: ServiceItem[] = [
   {
-    id: 'app-dev',
-    name: 'Application Development',
-    price: '₱15,000',
-    description: 'We believe great digital solutions are built when people collaborate, share ideas, and work toward a common goal.',
+    id: "app-dev",
+    number: "01",
+    listTitle: "Application Development",
+    listSubtitle: "Build powerful, scalable apps",
+    detailTitle: "Application Development",
+    detailTagline: "Build powerful, scalable apps",
+    price: "P25,000",
+    description:
+      "We design and build reliable applications that scale with your business needs. Every feature is engineered for speed, clarity, and long-term growth.",
     features: [
-      'Logo Design',
-      'Color Palette',
-      'Logo Design',
-      'Color Palette',
-      'Etc...',
+      "Product discovery",
+      "UI and UX design",
+      "App development",
+      "Testing and QA",
+      "Launch support",
+      "Ongoing maintenance",
     ],
   },
   {
-    id: 'graphic-design',
-    name: 'Graphic Design & Layout',
-    price: '₱12,000',
-    description: 'Professional visual design and layout services for all your branding needs with exceptional quality.',
+    id: "graphic-design",
+    number: "02",
+    listTitle: "Graphic Design & Layout",
+    listSubtitle: "Visual identity that speaks louder",
+    detailTitle: "Graphic Design & Layout",
+    detailTagline: "Visual identity that speaks louder",
+    price: "P20,000",
+    description:
+      "From brand identities to marketing collateral, we craft compelling visuals that communicate your story. Every pixel is purposeful - designed to leave a lasting impression.",
     features: [
-      'Brand Strategy',
-      'Visual Design',
-      'Layout Design',
-      'Color Research',
-      'Etc...',
+      "Brand identity & logo design",
+      "Social media graphics",
+      "Illustration & visual assets",
+      "Print & digital collateral",
+      "Packaging & merchandise",
+      "Layout systems",
     ],
   },
   {
-    id: 'website-services',
-    name: 'Website & Digital Services',
-    price: '₱20,000',
-    description: 'Complete website development and digital service solutions tailored to your business growth.',
+    id: "website-services",
+    number: "03",
+    listTitle: "Website & Digital Services",
+    listSubtitle: "Your complete digital presence",
+    detailTitle: "Website & Digital Services",
+    detailTagline: "Your complete digital presence",
+    price: "P30,000",
+    description:
+      "We build modern websites that look great and perform even better. From launch to optimization, we cover every piece of your online presence.",
     features: [
-      'Web Design',
-      'Development',
-      'SEO Setup',
-      'Analytics',
-      'Etc...',
+      "Responsive web design",
+      "Custom development",
+      "SEO setup",
+      "Analytics integration",
+      "Content support",
+      "Performance tuning",
     ],
   },
   {
-    id: 'web-invitation',
-    name: 'Web-Based Invitation',
-    price: '₱8,000',
-    description: 'Interactive and elegant web-based invitation solutions for your special events and occasions.',
+    id: "web-invitation",
+    number: "04",
+    listTitle: "Web-Based Invitation",
+    listSubtitle: "Unforgettable digital invites",
+    detailTitle: "Web-Based Invitation",
+    detailTagline: "Unforgettable digital invites",
+    price: "P8,000",
+    description:
+      "Elevate your events with interactive, elegant invitations that guests will remember. Built for any screen with RSVP tools included.",
     features: [
-      'Custom Design',
-      'RSVP System',
-      'Guest Management',
-      'Responsive Design',
-      'Etc...',
+      "Custom event pages",
+      "RSVP system",
+      "Guest management",
+      "Mobile friendly design",
+      "Shareable links",
+      "Live updates",
     ],
   },
   {
-    id: 'website-maintenance',
-    name: 'Website Maintenance',
-    price: '₱5,000',
-    description: 'Ongoing website maintenance and support to keep your digital presence running smoothly.',
+    id: "website-maintenance",
+    number: "05",
+    listTitle: "Website Maintenance",
+    listSubtitle: "Always on, always optimized",
+    detailTitle: "Website Maintenance",
+    detailTagline: "Always on, always optimized",
+    price: "P5,000",
+    description:
+      "Keep your site secure, fast, and up to date. We handle updates, monitoring, and fixes so you stay focused on growth.",
     features: [
-      'Regular Updates',
-      'Security Monitoring',
-      'Backup Services',
-      'Support',
-      'Etc...',
+      "Routine updates",
+      "Security monitoring",
+      "Backups",
+      "Bug fixes",
+      "Uptime checks",
+      "Content tweaks",
     ],
   },
 ];
 
 export default function WhatWeDo() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? SERVICES_DATA.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === SERVICES_DATA.length - 1 ? 0 : prev + 1));
-  };
-
-  const getVisibleCards = () => {
-    const cards = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % SERVICES_DATA.length;
-      cards.push(SERVICES_DATA[index]);
-    }
-    return cards;
-  };
+  const [activeIndex, setActiveIndex] = useState(1);
+  const activeService = SERVICES[activeIndex];
 
   return (
-    <section className={styles.whatWeDoSection}>
-      <div className={styles.content}>
-        <h1 className={`${zenDots.className} ${styles.title}`}>What We Do?</h1>
-
-        <p className={styles.subtitle}>
-          Every package is structured to deliver efficiency, creativity, and results that align
-          with each client's goals.
-        </p>
-
-        {/* Carousel Container */}
-        <div className={styles.carouselContainer}>
-          <div className={styles.cardsWrapper}>
-            {getVisibleCards().map((service) => (
-              <div key={service.id} className={styles.cardWrapper}>
-                <div className={styles.cardIcon}>
-                  <svg viewBox="0 0 100 100" className={styles.hexagon}>
-                    <polygon points="50,10 90,35 90,85 50,110 10,85 10,35" />
-                  </svg>
-                </div>
-
-                <article className={styles.serviceCard}>
-                  <h3 className={styles.cardTitle}>{service.name}</h3>
-
-                <div className={styles.priceSection}>
-                  <p className={styles.priceLabel}>Price starts @</p>
-                  <p className={styles.priceValue}>{service.price}</p>
-                </div>
-
-                <p className={styles.cardDescription}>{service.description}</p>
-
-                <ul className={styles.featuresList}>
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className={styles.featureItem}>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <button className={styles.selectButton} type="button">
-                  <span>Select Service</span>
-                  <span className={styles.arrow}>↗</span>
-                </button>
-                </article>
-              </div>
-            ))}
+    <section className={styles.section}>
+      <div className={styles.inner}>
+        <div className={styles.header}>
+          <div>
+            <p className={styles.eyebrow}>Services</p>
+            <h2 className={styles.title}>What We Do?</h2>
           </div>
+          <p className={styles.headerNote}>
+            Five focused services built to cover every dimension of your digital
+            growth - from first idea to long-term success.
+          </p>
         </div>
 
-        {/* Navigation Controls */}
-        <div className={styles.navigationControls}>
-          <button
-            className={styles.navButton}
-            onClick={handlePrev}
-            type="button"
-            aria-label="Previous services"
-          >
-            <ChevronLeft size={24} />
-          </button>
+        <div className={styles.body}>
+          <div className={styles.list}>
+            {SERVICES.map((service, index) => (
+              <button
+                key={service.id}
+                type="button"
+                className={`${styles.listItem} ${
+                  index === activeIndex ? styles.listItemActive : ""
+                }`}
+                onClick={() => setActiveIndex(index)}
+              >
+                <span className={styles.listNumber}>{service.number}</span>
+                <span className={styles.listText}>
+                  <span className={styles.listTitle}>{service.listTitle}</span>
+                  <span className={styles.listSubtitle}>{service.listSubtitle}</span>
+                </span>
+                <span className={styles.listArrow}>&gt;</span>
+              </button>
+            ))}
+          </div>
 
-          <button
-            className={styles.navButton}
-            onClick={handleNext}
-            type="button"
-            aria-label="Next services"
-          >
-            <ChevronRight size={24} />
-          </button>
+          <article className={styles.detailCard}>
+            <div className={styles.detailHeader}>
+              <span className={styles.detailIcon} aria-hidden="true" />
+              <span className={styles.detailNumber}>{activeService.number}</span>
+            </div>
+
+            <h3 className={styles.detailTitle}>{activeService.detailTitle}</h3>
+            <p className={styles.detailTagline}>{activeService.detailTagline}</p>
+
+            <p className={styles.detailPriceLabel}>Starts at</p>
+            <p className={styles.detailPrice}>{activeService.price}</p>
+
+            <p className={styles.detailDescription}>{activeService.description}</p>
+
+            <div className={styles.detailFeatures}>
+              {activeService.features.map((feature) => (
+                <div key={feature} className={styles.detailFeature}>
+                  <span className={styles.featureDot} aria-hidden="true" />
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            <button type="button" className={styles.detailButton}>
+              Get Started
+              <span className={styles.detailButtonArrow}>&gt;</span>
+            </button>
+          </article>
         </div>
       </div>
     </section>

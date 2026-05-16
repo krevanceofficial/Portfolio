@@ -1,0 +1,142 @@
+.section {
+  background: #eef1ed;
+  padding: clamp(3rem, 6vw, 5.5rem) 0;
+}
+
+.inner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #3b4b40;
+  margin: 0 0 0.6rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #2a3c2f;
+  margin: 0 0 0.8rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #3f5347;
+  max-width: 720px;
+  line-height: 1.6;
+  margin: 0 0 2.4rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.preview {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #d9d9d9;
+  border-radius: 24px;
+}
+
+.cardTitle {
+  margin: 0.3rem 0 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #2f3d31;
+  letter-spacing: 0.08em;
+}
+
+.cardDescription {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4d5f54;
+  line-height: 1.5;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.arrows {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.arrowButton {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1.5px solid #2f3d31;
+  background: transparent;
+  color: #2f3d31;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.arrowButton:hover {
+  background: #2f3d31;
+  color: #eef1ed;
+  transform: translateY(-1px);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid #2f3d31;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: #2f3d31;
+}
+
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card:nth-child(n + 2) {
+    display: none;
+  }
+
+  .controls {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
