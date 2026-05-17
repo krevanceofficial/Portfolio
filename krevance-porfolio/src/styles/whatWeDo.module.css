@@ -1,6 +1,7 @@
 .section {
   background: #eef1ed;
   padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 .inner {
@@ -29,6 +30,7 @@
   color: #2a3c2f;
   margin: 0;
   letter-spacing: -0.02em;
+  font-family: var(--font-zen-dots), "Zen Dots", var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 .headerNote {

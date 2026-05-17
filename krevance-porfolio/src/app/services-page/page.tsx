@@ -1,5 +1,5 @@
-import Nav from "../../components/sections/nav";
-import WhatWeDo from "../../components/sections/whatWeDo";
+import Nav from "../../components/sections/landing-page/nav";
+import WhatWeDo from "../../components/sections/landing-page/whatWeDo";
 
 export default function ServicesPage() {
   return (

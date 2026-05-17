@@ -7,6 +7,7 @@
   max-width: 100%;
   padding: clamp(2.5rem, 4vw, 4.5rem) 1.25rem;
   background: #eef1ed;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 .heroInner {
@@ -38,6 +39,7 @@
   letter-spacing: -0.01em;
   color: #2a3c2f;
   text-shadow: 0 4px 0 rgba(0, 0, 0, 0.18);
+  font-family: var(--font-zen-dots), "Zen Dots", var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 .subtitle {
@@ -90,6 +92,7 @@
   color: #2a3c2f;
   min-width: 4.75rem;
   text-align: right;
+  font-family: var(--font-zen-dots), "Zen Dots", var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 .statText {

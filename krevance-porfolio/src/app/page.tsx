@@ -1,9 +1,11 @@
-import Nav from "../components/sections/nav";
-import Hero from "../components/sections/hero";
-import AboutOverview from "../components/sections/aboutOverview";
-import WhatWeDo from "../components/sections/whatWeDo";
-import KraevsWork from "../components/sections/kraevsWork";
-import OurApproach from "../components/sections/ourApproach";
+import Nav from "../components/sections/landing-page/nav";
+import Hero from "../components/sections/landing-page/hero";
+import AboutOverview from "../components/sections/landing-page/aboutOverview";
+import WhatWeDo from "../components/sections/landing-page/whatWeDo";
+import KraevsWork from "../components/sections/landing-page/kraevsWork";
+import OurApproach from "../components/sections/landing-page/ourApproach";
+import InquirySection from "../components/sections/landing-page/inquirySection";
+import Footer from "../components/sections/landing-page/footer";
 export default function Home() {
   return (
     <main className="min-h-screen dot">
@@ -17,9 +19,8 @@ export default function Home() {
       <KraevsWork />
       <WhatWeDo />
       <OurApproach />
-      <div className="mt-24 text-center z-10 flex items-center justify-center min-h-[60vh]">
-        <h1 className="text-4xl font-bold text-foreground">Welcome to My Footers</h1>
-      </div>
+      <InquirySection />
+      <Footer />
     </main>
   );
 }
