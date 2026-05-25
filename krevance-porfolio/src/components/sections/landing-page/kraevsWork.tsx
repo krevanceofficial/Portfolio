@@ -56,13 +56,19 @@ export default function KraevsWork() {
 	return (
 		<section className={styles.section}>
 			<div className={styles.inner}>
-				<p className={styles.eyebrow}>Portfolio</p>
-				<h2 className={styles.title}>Kraev&apos;s Works</h2>
-				<p className={styles.subtitle}>
-					For Krevance, every completed project is a chapter in its clients&apos;
-					stories. The team ensures that every design and platform reflects
-					identity and delivers impact in the digital world.
-				</p>
+				<header className={styles.header}>
+					<div className={styles.headerLeft}>
+						<p className={styles.eyebrow}>Portfolio</p>
+						<h2 className={styles.title}>Kraev&apos;s Works</h2>
+					</div>
+					<div className={styles.headerRight}>
+						<p className={styles.subtitle}>
+							For Krevance, every completed project is a chapter in its clients&apos;
+							stories. The team ensures that every design and platform reflects
+							identity and delivers impact in the digital world.
+						</p>
+					</div>
+				</header>
 
 				<div className={styles.cards}>
 					{visibleProjects.map((project, idx) => (

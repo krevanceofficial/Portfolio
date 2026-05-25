@@ -5,7 +5,6 @@ import WhatWeDo from "../components/sections/landing-page/whatWeDo";
 import KraevsWork from "../components/sections/landing-page/kraevsWork";
 import OurApproach from "../components/sections/landing-page/ourApproach";
 import InquirySection from "../components/sections/landing-page/inquirySection";
-import Footer from "../components/sections/landing-page/footer";
 export default function Home() {
   return (
     <main className="min-h-screen dot">
@@ -20,7 +19,6 @@ export default function Home() {
       <WhatWeDo />
       <OurApproach />
       <InquirySection />
-      <Footer />
     </main>
   );
 }

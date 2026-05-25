@@ -4,7 +4,7 @@ import OurApproach from "../../components/sections/landing-page/ourApproach";
 import Hero from "../../components/sections/landing-page/hero";
 import KraevsWork from "../../components/sections/landing-page/kraevsWork";
 import InquirySection from "../../components/sections/landing-page/inquirySection";
-import Footer from "../../components/sections/landing-page/footer";
+import Footer from "../../components/sections/footer";
 
 export default function ServicesPage() {
   return (
@@ -17,7 +17,6 @@ export default function ServicesPage() {
         <WhatWeDo />
         <OurApproach /> 
         <InquirySection />
-        <Footer />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../../styles/footer.module.css";
 import logo from "../images/logo.png";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
 	return (
@@ -31,25 +32,30 @@ export default function Footer() {
 					<h3 className={styles.blockTitle}>Get In Touch</h3>
 					<ul className={styles.contactList}>
 						<li>
-							<span className={styles.contactIcon} aria-hidden="true">✉</span>
+							<span className={styles.contactIcon} aria-hidden="true"><Mail size={14} /></span>
 							krevance.official@gmail.com
 						</li>
 						<li>
-							<span className={styles.contactIcon} aria-hidden="true">☎</span>
+							<span className={styles.contactIcon} aria-hidden="true"><Phone size={14} /></span>
 							+6391 958 7721
 						</li>
 						<li>
-							<span className={styles.contactIcon} aria-hidden="true">⌂</span>
+							<span className={styles.contactIcon} aria-hidden="true"><MapPin size={14} /></span>
 							Bacoor City, Cavite, Philippines
 						</li>
 					</ul>
 
 					<div className={styles.socials}>
-						<a href="#" aria-label="Facebook" className={styles.socialIcon}>f</a>
-						<a href="#" aria-label="Instagram" className={styles.socialIcon}>◎</a>
-						<a href="#" aria-label="LinkedIn" className={styles.socialIcon}>in</a>
+						<a href="#" aria-label="Facebook" className={styles.socialIcon}><Facebook size={14} /></a>
+						<a href="#" aria-label="Instagram" className={styles.socialIcon}><Instagram size={14} /></a>
+						<a href="#" aria-label="LinkedIn" className={styles.socialIcon}><Linkedin size={14} /></a>
 					</div>
 				</div>
+			</div>
+
+			<div className={styles.bottomBar}>
+				<p>© 2026 Krevance. All rights reserved.</p>
+				<p>Designed & Built with by Krevance</p>
 			</div>
 		</footer>
 	);

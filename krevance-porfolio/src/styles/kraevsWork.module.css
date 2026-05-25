@@ -1,5 +1,4 @@
 .section {
-  background: #eef1ed;
   padding: clamp(3rem, 6vw, 5.5rem) 0;
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
@@ -7,6 +6,32 @@
 .inner {
   width: min(1200px, 92%);
   margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.headerLeft {
+  min-width: 0;
+}
+
+.headerRight {
+  min-width: 0;
+  max-width: 720px;
+  display: flex;
+  
+  /* HETO ANG MAHALAGANG DAGDAG */
+  align-self: flex-end; /* Itutulak ang buong box na ito sa pinakailalim ng kaniyang row */
+  
+  /* Panatilihin ang mga ito para sa alignment ng text sa loob */
+  align-items: center;
+  justify-content: center;
+  text-align: right; /* O gawing 'center' kung gusto mong nakagitna ang mga linya ng text */
 }
 
 .eyebrow {
@@ -24,6 +49,11 @@
   margin: 0 0 0.8rem;
   letter-spacing: -0.02em;
   font-family: var(--font-zen-dots), "Zen Dots", var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  display: inline-block;
+  white-space: nowrap;
+  word-break: keep-all;
+  hyphens: none;
+  overflow-wrap: normal;
 }
 
 .subtitle {
@@ -33,6 +63,7 @@
   line-height: 1.6;
   margin: 0 0 2.4rem;
 }
+
 
 .cards {
   display: grid;
@@ -131,6 +162,17 @@
 }
 
 @media (max-width: 760px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .headerRight {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   .cards {
     grid-template-columns: 1fr;
   }
