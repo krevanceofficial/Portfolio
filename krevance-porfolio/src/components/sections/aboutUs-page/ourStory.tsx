@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { cubicBezier, motion } from "framer-motion";
 import styles from "../../../styles/ourStory.module.css";
 
 export default function OurStory() {
@@ -18,7 +18,7 @@ export default function OurStory() {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.55, ease: cubicBezier(0.22, 1, 0.36, 1) },
     },
   };
 
@@ -27,7 +27,7 @@ export default function OurStory() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1) },
     },
   };
 
@@ -44,7 +44,7 @@ export default function OurStory() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.48, ease: cubicBezier(0.22, 1, 0.36, 1) },
     },
   };
 

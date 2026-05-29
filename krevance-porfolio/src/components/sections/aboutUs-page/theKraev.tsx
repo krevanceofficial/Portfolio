@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { cubicBezier, motion } from "framer-motion";
 import styles from "../../../styles/theKraev.module.css";
 
 const TEAM = [
@@ -25,7 +25,7 @@ export default function TheKraev() {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.55, ease: cubicBezier(0.22, 1, 0.36, 1) },
     },
   };
 
@@ -42,7 +42,7 @@ export default function TheKraev() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1) },
     },
   };
 
@@ -50,7 +50,7 @@ export default function TheKraev() {
     backgroundPosition: ["0px 0px", "24px 24px", "0px 0px"],
     transition: {
       duration: 18,
-      ease: "easeInOut",
+      ease: cubicBezier(0.42, 0, 0.58, 1),
       repeat: Infinity,
     },
   };
