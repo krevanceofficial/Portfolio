@@ -134,12 +134,19 @@ const NAV_LINKS = {
 };
 
 export default function Nav() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [forceExpand, setForceExpand] = useState(false);
+  
   const reducedMotion = useReducedMotion();
-  const shouldReduceMotion = reducedMotion ?? false;
+  
+  // Wait until mounted before applying client preferences
+  // This completely eliminates Hydration mismatches during SSR
+  const shouldReduceMotion = isMounted ? (reducedMotion ?? false) : false;
 
   useEffect(() => {
+    setIsMounted(true);
+    
     const onScroll = () => {
       const scrolled = window.scrollY > 50;
       setIsScrolled(scrolled);
@@ -147,12 +154,15 @@ export default function Nav() {
       if (!scrolled) setForceExpand(false);
     };
 
+    onScroll(); // Run immediately after mount to adapt to existing scroll state
     window.addEventListener("scroll", onScroll, { passive: true });
+    
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Logic: Collapse if scrolled, UNLESS the user clicked to force it open
   const isCollapsed = isScrolled && !forceExpand;
+  
   const navVariants = useMemo(
     () => NAV_CONTAINER_VARIANTS(shouldReduceMotion),
     [shouldReduceMotion]
@@ -207,8 +217,8 @@ export default function Nav() {
                     href={link.href}
                     className={styles["nav-link"]}
                     variants={linkItemVariants}
-                    whileHover={reducedMotion ? undefined : { y: -2 }}
-                    whileFocus={reducedMotion ? undefined : { y: -2 }}
+                    whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                    whileFocus={shouldReduceMotion ? undefined : { y: -2 }}
                   >
                     <span className={styles["nav-link-text"]}>{link.label}</span>
                     <span className={styles["nav-link-underline"]} aria-hidden="true" />
@@ -222,13 +232,13 @@ export default function Nav() {
             href="/landingpage"
             className={`${styles["logo-button"]} ${
               isCollapsed ? styles["logo-button-collapsed"] : ""
-            }`}
+            }`.trim()}
             onClick={handleLogoClick}
           >
             <motion.div
               className={styles["logo-button-inner"]}
-              whileHover={reducedMotion ? undefined : { scale: 1.03 }}
-              whileTap={reducedMotion ? undefined : { scale: 0.98 }}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
               layout
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -285,8 +295,8 @@ export default function Nav() {
                     href={link.href}
                     className={styles["nav-link"]}
                     variants={linkItemVariants}
-                    whileHover={reducedMotion ? undefined : { y: -2 }}
-                    whileFocus={reducedMotion ? undefined : { y: -2 }}
+                    whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                    whileFocus={shouldReduceMotion ? undefined : { y: -2 }}
                   >
                     <span className={styles["nav-link-text"]}>{link.label}</span>
                     <span className={styles["nav-link-underline"]} aria-hidden="true" />
