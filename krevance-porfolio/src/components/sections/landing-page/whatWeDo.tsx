@@ -118,7 +118,7 @@ export default function WhatWeDo() {
   const activeService = SERVICES[activeIndex];
 
   return (
-    <section className={styles.section}>
+    <section id="services" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <div>

@@ -54,7 +54,7 @@ export default function KraevsWork() {
 	};
 
 	return (
-		<section className={styles.section}>
+		<section id="portfolio" className={styles.section}>
 			<div className={styles.inner}>
 				<header className={styles.header}>
 					<div className={styles.headerLeft}>

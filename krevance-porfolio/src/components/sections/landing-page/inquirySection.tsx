@@ -2,7 +2,7 @@ import styles from "../../../styles/inquirySection.module.css";
 
 export default function InquirySection() {
 	return (
-		<section className={styles.section}>
+		<section id="contact" className={styles.section}>
 			<div className={styles.inner}>
 				<div className={styles.header}>
 					<p className={styles.eyebrow}>It all starts with a</p>
