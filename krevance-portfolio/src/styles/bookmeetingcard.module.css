@@ -1,0 +1,23 @@
+.card {
+  position: relative;
+  background: rgba(236, 239, 237, 0.6);
+  border: 1px solid rgba(37, 58, 39, 0.18);
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #2a3c2f;
+  margin: 0 0 1rem;
+  font-family: var(--font-zen-dots), "Zen Dots", sans-serif;
+}
+
+.timeSection {
+  margin-top: 1.5rem;
+}

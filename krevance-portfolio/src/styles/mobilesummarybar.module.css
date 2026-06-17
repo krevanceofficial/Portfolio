@@ -1,0 +1,87 @@
+/* src/styles/mobilesummarybar.module.css */
+
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #253A27;
+  color: #fff;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", sans-serif;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", sans-serif;
+}
+
+.dashLine {
+  width: 24px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.6);
+  margin-top: 0.15rem;
+}
+
+.meta {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.1rem;
+}
+
+.viewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.viewBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.viewBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Hide on desktop */
+@media (min-width: 980px) {
+  .bar {
+    display: none;
+  }
+}

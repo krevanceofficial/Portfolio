@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
+    --background: #ecefed; /* #ecefed -> ito yung nasa figma na color ng bg mismo*/
     --foreground: #253A27;
   }
 }

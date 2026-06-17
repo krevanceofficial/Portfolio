@@ -1,0 +1,90 @@
+/* src/styles/ContactUs.module.css */
+
+.section {
+  padding: clamp(3rem, 6vw, 5.5rem) 0;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.inner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.formColumn {
+  min-width: 0;
+}
+
+.sidebarColumn {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.successWrapper {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successInner {
+  text-align: center;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  background: #253A27;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.successIcon svg {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+}
+
+.successTitle {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #253A27;
+  margin: 0 0 0.8rem;
+  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", sans-serif;
+}
+
+.successText {
+  color: #3f5347;
+  font-size: 1.05rem;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 🟢 NEW: Hide desktop sidebar on mobile */
+@media (max-width: 979px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebarColumn {
+    display: none; /* Hide the desktop sidebar */
+  }
+
+  /* Padding so form content isn't covered by the fixed bottom bar */
+  .section {
+    padding-bottom: 6rem;
+  }
+}

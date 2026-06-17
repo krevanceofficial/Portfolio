@@ -1,0 +1,47 @@
+/* src/styles/timeslotpicker.module.css */
+
+.wrapper {
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.heading {
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #2a3c2f;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.slot {
+  padding: 0.55rem 0.4rem;
+  font-size: 0.78rem;
+  background: transparent;
+  border: 1px solid rgba(42, 60, 47, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  color: #2a3c2f;
+  transition: all 0.15s ease;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.slot:hover:not(:disabled) {
+  border-color: #2a3c2f;
+}
+
+.slotSelected {
+  background: #2a3c2f;
+  color: #fff;
+  border-color: #2a3c2f;
+}
+
+.slot:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

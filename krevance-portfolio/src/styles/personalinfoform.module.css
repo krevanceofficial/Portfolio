@@ -1,0 +1,11 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(42, 60, 47, 0.2);
+  margin: 1rem 0;
+}

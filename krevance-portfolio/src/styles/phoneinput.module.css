@@ -1,0 +1,128 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #2a3c2f;
+  font-weight: 600;
+  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", sans-serif;
+}
+
+.inputRow {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.codeSelector {
+  position: relative;
+}
+
+.codeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.2rem;
+  border: 1.5px solid rgba(42, 60, 47, 0.5);
+  border-radius: 10px;
+  background: transparent;
+  color: #2a3c2f;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  font-family: "AvantGarde Bk BT", sans-serif;
+  min-width: 120px;
+}
+
+.codeButton:hover {
+  border-color: #2a3c2f;
+}
+
+.codeFlag {
+  font-size: 1.1rem;
+}
+
+.codeChevron {
+  margin-left: auto;
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+
+.codeChevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 260px;
+  background: #fff;
+  border: 1.5px solid rgba(42, 60, 47, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #2a3c2f;
+  font-size: 0.9rem;
+  transition: background 0.15s ease;
+  font-family: "AvantGarde Bk BT", sans-serif;
+}
+
+.dropdownItem:hover {
+  background: rgba(42, 60, 47, 0.05);
+}
+
+.dropdownDial {
+  margin-left: auto;
+  color: #6b6560;
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 1rem 1.4rem;
+  background: transparent;
+  border: 1.5px solid rgba(42, 60, 47, 0.5);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #2a3c2f;
+  font-family: "AvantGarde Bk BT", sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+.phoneInput::placeholder {
+  color: #a8a39c;
+}
+
+.phoneInput:focus {
+  outline: none;
+  border-color: #2a3c2f;
+}
+
+.error {
+  border-color: #dc2626;
+}
+
+.errorText {
+  font-size: 0.8rem;
+  color: #dc2626;
+  margin: 0;
+}

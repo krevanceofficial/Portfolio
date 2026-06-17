@@ -129,7 +129,7 @@ const NAV_LINKS = {
   ],
   right: [
     { href: "/landingpage#portfolio", label: "Portfolio" },
-    { href: "/landingpage#contact", label: "Contact Us" },
+    { href: "/contactus", label: "Contact Us" },
   ],
 };
 

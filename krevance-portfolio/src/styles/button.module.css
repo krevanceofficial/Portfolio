@@ -1,0 +1,51 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.primary {
+  background: #2a3c2f;
+  color: #fff;
+}
+
+.primary:hover:not(:disabled) {
+  background: #1f2e22;
+  transform: translateY(-1px);
+}
+
+.outline {
+  background: transparent;
+  color: #2a3c2f;
+  border: 1.5px solid #2a3c2f;
+}
+
+.outline:hover:not(:disabled) {
+  background: #2a3c2f;
+  color: #fff;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", sans-serif;
+}
+
+.label {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #2a3c2f;
+}
+
+.dashes {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dash {
+  width: 36px;
+  height: 5px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(42, 60, 47, 0.35);
+  transition: all 0.3s ease;
+}
+
+.dashActive {
+  background: #2a3c2f;
+  border-color: #2a3c2f;
+}
