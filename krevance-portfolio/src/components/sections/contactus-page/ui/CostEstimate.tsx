@@ -19,7 +19,7 @@ const CostEstimate: React.FC<Props> = ({ breakdown }) => {
       <h3 className={styles.heading}>Cost Estimate</h3>
 
       <div className={styles.priceWrapper}>
-        <h2 className={styles.startsAt}>Starts At</h2>
+        <h2 className={styles.startsAt}>Investment Starts At</h2>
         {hasData ? (
           <p className={styles.price}>{formatPrice(breakdown.basePrice)}</p>
         ) : (

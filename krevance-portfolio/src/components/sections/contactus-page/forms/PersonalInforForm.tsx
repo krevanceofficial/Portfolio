@@ -23,11 +23,30 @@ const PersonalInfoForm: React.FC<Props> = ({ formData, onUpdate, onNext }) => {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!formData.fullName.trim()) e.fullName = 'Full name is required';
+    
     if (!formData.email.trim()) e.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) e.email = 'Invalid email';
-    if (!formData.phoneNumber.trim()) e.phoneNumber = 'Phone number is required';
+    
+    // Validation para sa eksaktong 9 digits (tinatanggal ang mga spaces o symbols kung mayroon man)
+    const cleanedPhone = formData.phoneNumber.replace(/\D/g, '');
+    if (!formData.phoneNumber.trim()) {
+      e.phoneNumber = 'Phone number is required';
+    } else if (cleanedPhone.length !== 11) {
+      e.phoneNumber = 'Phone number must be exactly 9 digits';
+    }
+
     setErrors(e);
     return Object.keys(e).length === 0;
+  };
+
+  const handlePhoneChange = (value: string) => {
+    // Kinukuha lang ang mga numero (digits only)
+    const digitsOnly = value.replace(/\D/g, '');
+    
+    // Haharangin ang pag-type kapag lumampas na sa 11 digits
+    if (digitsOnly.length <= 11) {
+      onUpdate('phoneNumber', digitsOnly);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -58,7 +77,8 @@ const PersonalInfoForm: React.FC<Props> = ({ formData, onUpdate, onNext }) => {
         countryCode={formData.countryCode}
         phoneNumber={formData.phoneNumber}
         onCountryCodeChange={(c) => onUpdate('countryCode', c)}
-        onPhoneNumberChange={(n) => onUpdate('phoneNumber', n)}
+        // Ginamit ang pinasadyang handler sa halip na direktang onUpdate
+        onPhoneNumberChange={handlePhoneChange} 
         error={errors.phoneNumber}
       />
 

@@ -14,13 +14,13 @@
   padding: 0 0.75rem;
 }
 
-/* The Main Navbar Shape */
+/* Find your .nav-shape class and remove clip-path */
 .nav-shape {
   background: #384B3A;
   color: #fff;
   position: relative;
   margin: 0 auto;
-  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  /* REMOVE THIS LINE: clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,11 +31,12 @@
   will-change: transform, width, height, border-radius, clip-path, backdrop-filter, box-shadow;
 }
 
+/* Also ensure your collapsed utility helper doesn't reintroduce it */
 .nav-shape-collapsed {
   width: 20%;
   margin-left: auto;
   margin-right: auto;
-  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+  /* REMOVE THIS LINE: clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%); */
   border-radius: 0;
   justify-content: center;
   gap: 0;

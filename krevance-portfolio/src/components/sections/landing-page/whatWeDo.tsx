@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "../../../styles/whatWeDo.module.css";
+import Link from "next/link";
 
 interface ServiceItem {
   id: string;
@@ -17,102 +18,82 @@ interface ServiceItem {
 
 const SERVICES: ServiceItem[] = [
   {
-    id: "app-dev",
+    id: "system-development",
     number: "01",
-    listTitle: "Application Development",
-    listSubtitle: "Build powerful, scalable apps",
-    detailTitle: "Application Development",
-    detailTagline: "Build powerful, scalable apps",
-    price: "P25,000",
+    listTitle: "System Development",
+    listSubtitle: "Build smarter business operations",
+    detailTitle: "System Development",
+    detailTagline: "Build smarter business operations",
+    price: "₱15,000",
     description:
-      "We design and build reliable applications that scale with your business needs. Every feature is engineered for speed, clarity, and long-term growth.",
+      "Create custom systems and web applications designed to simplify workflows, improve productivity and support business growth.",
     features: [
-      "Product discovery",
-      "UI and UX design",
-      "App development",
-      "Testing and QA",
-      "Launch support",
-      "Ongoing maintenance",
+      "Custom web systems",
+      "Admin dashboard",
+      "User management",
+      "Process automation",
+      "Business reports",
+      "Secure access",
     ],
   },
   {
-    id: "graphic-design",
+    id: "ecommerce-solutions",
     number: "02",
-    listTitle: "Graphic Design & Layout",
-    listSubtitle: "Visual identity that speaks louder",
-    detailTitle: "Graphic Design & Layout",
-    detailTagline: "Visual identity that speaks louder",
-    price: "P20,000",
+    listTitle: "E-Commerce Solutions",
+    listSubtitle: "Sell online with confidence",
+    detailTitle: "E-Commerce Solutions",
+    detailTagline: "Sell online with confidence",
+    price: "₱50,000",
     description:
-      "From brand identities to marketing collateral, we craft compelling visuals that communicate your story. Every pixel is purposeful - designed to leave a lasting impression.",
+      "Complete online selling solutions with payment integration, inventory management, and customer-focused features.",
     features: [
-      "Brand identity & logo design",
-      "Social media graphics",
-      "Illustration & visual assets",
-      "Print & digital collateral",
-      "Packaging & merchandise",
-      "Layout systems",
+      "Online payments",
+      "Product management",
+      "Inventory tracking",
+      "Customer dashboard",
+      "Sales reports",
+      "Live chat support",
     ],
   },
   {
-    id: "website-services",
+    id: "branding-creative",
     number: "03",
-    listTitle: "Website & Digital Services",
-    listSubtitle: "Your complete digital presence",
-    detailTitle: "Website & Digital Services",
-    detailTagline: "Your complete digital presence",
-    price: "P30,000",
+    listTitle: "Branding & Digital Creative",
+    listSubtitle: "Build a brand people remember",
+    detailTitle: "Branding & Digital Creative",
+    detailTagline: "Build a brand people remember",
+    price: "₱2,500",
     description:
-      "We build modern websites that look great and perform even better. From launch to optimization, we cover every piece of your online presence.",
+      "Create a professional and consistent visual identity that strengthens your brand and builds customer trust.",
     features: [
-      "Responsive web design",
-      "Custom development",
-      "SEO setup",
-      "Analytics integration",
-      "Content support",
-      "Performance tuning",
-    ],
-  },
-  {
-    id: "web-invitation",
-    number: "04",
-    listTitle: "Web-Based Invitation",
-    listSubtitle: "Unforgettable digital invites",
-    detailTitle: "Web-Based Invitation",
-    detailTagline: "Unforgettable digital invites",
-    price: "P8,000",
-    description:
-      "Elevate your events with interactive, elegant invitations that guests will remember. Built for any screen with RSVP tools included.",
-    features: [
-      "Custom event pages",
-      "RSVP system",
-      "Guest management",
-      "Mobile friendly design",
-      "Shareable links",
-      "Live updates",
+      "Logo design",
+      "Brand identity",
+      "Color palette",
+      "Typography selection",
+      "Marketing materials",
+      "Brand guidelines",
     ],
   },
   {
     id: "website-maintenance",
-    number: "05",
-    listTitle: "Website Maintenance",
-    listSubtitle: "Always on, always optimized",
-    detailTitle: "Website Maintenance",
-    detailTagline: "Always on, always optimized",
-    price: "P5,000",
+    number: "04",
+    listTitle: "Website Maintenance & Care",
+    listSubtitle: "Always online, always updated",
+    detailTitle: "Website Maintenance & Care",
+    detailTagline: "Always online, always updated",
+    price: "₱3,000 / Month",
     description:
-      "Keep your site secure, fast, and up to date. We handle updates, monitoring, and fixes so you stay focused on growth.",
+      "Keep your website secure, updated, and running smoothly while you focus on growing your business.",
     features: [
-      "Routine updates",
-      "Security monitoring",
-      "Backups",
-      "Bug fixes",
-      "Uptime checks",
-      "Content tweaks",
+      "Website monitoring",
+      "Security checks",
+      "Backup management",
+      "Content updates",
+      "Technical support",
+      "Performance maintenance",
     ],
   },
 ];
-
 export default function WhatWeDo() {
   const [activeIndex, setActiveIndex] = useState(1);
   const activeService = SERVICES[activeIndex];
@@ -161,7 +142,7 @@ export default function WhatWeDo() {
             <h3 className={styles.detailTitle}>{activeService.detailTitle}</h3>
             <p className={styles.detailTagline}>{activeService.detailTagline}</p>
 
-            <p className={styles.detailPriceLabel}>Starts at</p>
+            <p className={styles.detailPriceLabel}>INVESTMENT STARTS AT</p>
             <p className={styles.detailPrice}>{activeService.price}</p>
 
             <p className={styles.detailDescription}>{activeService.description}</p>
@@ -175,10 +156,10 @@ export default function WhatWeDo() {
               ))}
             </div>
 
-            <button type="button" className={styles.detailButton}>
+            <Link href="/contactus" className={styles.detailButton}>
               Get Started
               <span className={styles.detailButtonArrow}>&gt;</span>
-            </button>
+            </Link>
           </article>
         </div>
       </div>

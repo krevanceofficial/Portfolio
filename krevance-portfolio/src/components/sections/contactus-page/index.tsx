@@ -12,7 +12,7 @@ import ReviewForm from './forms/ReviewForm';
 import CostEstimate from './ui/CostEstimate';
 import BookMeetingCard from './BookMeetingCard';
 import AddOnsCard from './ui/AddOnsCard';
-import { useMultiStepForm } from './hooks/useMultiStepForm';
+import { useMultiStepForm, clearFormStorage } from './hooks/useMultiStepForm';
 import { AddOn, CostBreakdown, Step } from './types/types';
 import styles from '../../../styles/contactus.module.css';
 import MobileSummarySheet from './MobileSummarySheet';
@@ -45,7 +45,7 @@ const timelineMultiplierMap: Record<string, { multiplier: number; label: string 
 };
 
 const ContactUsSection: React.FC = () => {
-  const { currentStep, formData, nextStep, prevStep, goToStep, updateFormData, totalSteps } =
+  const { currentStep, formData, nextStep, prevStep, goToStep, updateFormData, resetForm, totalSteps } =
     useMultiStepForm(5);
   const [submitted, setSubmitted] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -93,7 +93,11 @@ const ContactUsSection: React.FC = () => {
             formData={formData}
             onPrev={prevStep}
             onEditStep={goToStep}
-            onSubmit={() => setSubmitted(true)}
+            onSubmit={() => {
+              clearFormStorage();
+              resetForm();
+              setSubmitted(true);
+            }}
           />
         );
       default:

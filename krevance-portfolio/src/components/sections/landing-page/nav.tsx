@@ -19,7 +19,10 @@ const NAV_CONTAINER_VARIANTS = (reducedMotion: boolean) => ({
     backgroundColor: "rgba(56, 75, 58, 0.95)",
     backdropFilter: "blur(6px)",
     boxShadow: "0 10px 24px rgba(0, 0, 0, 0.22)",
-    clipPath: "polygon(0 0, 100% 0, 90% 100%, 10% 100%)",
+    
+    // Framer motion will now cleanly morph this clipPath string:
+    clipPath: "polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%)",
+    
     transition: reducedMotion
       ? { duration: 0 }
       : { type: "spring" as const, stiffness: 220, damping: 28, mass: 0.9 },
@@ -33,7 +36,10 @@ const NAV_CONTAINER_VARIANTS = (reducedMotion: boolean) => ({
     backgroundColor: "rgba(56, 75, 58, 0.82)",
     backdropFilter: "blur(14px)",
     boxShadow: "0 18px 34px rgba(0, 0, 0, 0.28)",
-    clipPath: "polygon(0 0, 100% 0, 70% 100%, 30% 100%)",
+    
+    // Matches your target collapsed layout layout clip geometry:
+    clipPath: "polygon(0% 0%, 100% 0%, 70% 100%, 30% 100%)",
+    
     transition: reducedMotion
       ? { duration: 0 }
       : { type: "spring" as const, stiffness: 240, damping: 32, mass: 0.85 },

@@ -84,6 +84,11 @@
   border-radius: 16px;
   background: #d9d9d9;
   border: 1px solid rgba(47, 61, 49, 0.2);
+  
+  /* Added rules to smoothly fit your profile photos */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cardContent {
@@ -132,7 +137,9 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   display: inline-flex;
   align-items: center;
+  justify-content: center; /* Ensures text stays centered if element expands */
   gap: 0.35rem;
+  text-decoration: none;   /* Removes default link underline */
 }
 
 .cvButton::before {
@@ -142,6 +149,7 @@
   border-radius: 4px;
   background: rgba(238, 241, 237, 0.8);
   box-shadow: inset 0 0 0 2px rgba(47, 61, 49, 0.4);
+  flex-shrink: 0;          /* Prevents the square icon decoration from squeezing */
 }
 
 .cvButton:hover {
@@ -155,12 +163,18 @@
   height: 28px;
   border-radius: 999px;
   border: 1px solid rgba(47, 61, 49, 0.3);
-    background: #f0f3ed;
+  background: #f0f3ed;
   color: #2f3d31;
   font-size: 0.7rem;
   cursor: pointer;
   transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease,
     background 0.2s ease;
+  
+  /* Added rules to perfectly center social glyphs (◎ and in) inside the circle */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;   /* Removes default link underline */
 }
 
 .iconButton:hover {

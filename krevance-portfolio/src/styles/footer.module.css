@@ -83,6 +83,19 @@
   font-size: 0.7rem;
 }
 
+.contactLink {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: inherit;            /* Ginagamit ang kulay ng text na galing sa footer */
+    text-decoration: none;     /* Tinatanggal ang default underline */
+    transition: color 0.2s ease;
+}
+
+.contactLink:hover {
+    color: #86efac;            /* Pwede mong lagyan ng banayad na hover color para sa mas magandang UX */
+}
+
 .socials {
   margin-top: 1rem;
   display: flex;

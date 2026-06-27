@@ -19,20 +19,21 @@ import {
 } from "react-icons/si";
 import styles from "../../../styles/technologies.module.css";
 
+// Idinagdag ang opisyal na dokumentasyon o website para sa bawat tool:
 const LOGOS = [
-  { name: "Reactjs", Icon: SiReact },
-  { name: "Nextjs", Icon: SiNextdotjs },
-  { name: "Nestjs", Icon: SiNestjs },
-  { name: "MySQL", Icon: SiMysql },
-  { name: "Figma", Icon: SiFigma },
-  { name: "JavaScript", Icon: SiJavascript },
-  { name: "Nodejs", Icon: SiNodedotjs },
-  { name: "HTML", Icon: SiHtml5 },
-  { name: "CSS", Icon: SiCss },
-  { name: "Bootstrap", Icon: SiBootstrap },
-  { name: "Tailwind CSS", Icon: SiTailwindcss },
-  { name: "Typeorm", Icon: SiTypeorm },
-  { name: "PHP", Icon: SiPhp },
+  { name: "Reactjs", Icon: SiReact, url: "https://react.dev" },
+  { name: "Nextjs", Icon: SiNextdotjs, url: "https://nextjs.org/docs" },
+  { name: "Nestjs", Icon: SiNestjs, url: "https://docs.nestjs.com" },
+  { name: "MySQL", Icon: SiMysql, url: "https://dev.mysql.com/doc" },
+  { name: "Figma", Icon: SiFigma, url: "https://help.figma.com/hc/en-us" },
+  { name: "JavaScript", Icon: SiJavascript, url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+  { name: "Nodejs", Icon: SiNodedotjs, url: "https://nodejs.org/docs" },
+  { name: "HTML", Icon: SiHtml5, url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+  { name: "CSS", Icon: SiCss, url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+  { name: "Bootstrap", Icon: SiBootstrap, url: "https://getbootstrap.com/docs" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, url: "https://tailwindcss.com/docs" },
+  { name: "Typeorm", Icon: SiTypeorm, url: "https://typeorm.io" },
+  { name: "PHP", Icon: SiPhp, url: "https://www.php.net/docs.php" },
 ];
 
 export default function Technologies() {
@@ -108,6 +109,7 @@ export default function Technologies() {
         </div>
 
         <div className={styles.marqueeStack}>
+          {/* Unang Marquee Row (Takbong Pakaliwa) */}
           <div
             className={styles.marqueeMask}
             onMouseEnter={handleMouseEnter}
@@ -115,24 +117,37 @@ export default function Technologies() {
           >
             <div className={styles.marqueeTrack} ref={marqueeRef}>
               <div className={styles.logoRow}>
-                {LOGOS.map(({ name, Icon }, index) => (
-                  <div key={`tech-${name}-${index}`} className={styles.logoItem}>
+                {LOGOS.map(({ name, Icon, url }, index) => (
+                  <a 
+                    key={`tech-${name}-${index}`} 
+                    href={url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.logoItem}
+                  >
                     <Icon className={styles.logoIcon} aria-hidden="true" />
                     <span className={styles.logoText}>{name}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
               <div className={styles.logoRow} aria-hidden="true">
-                {LOGOS.map(({ name, Icon }, index) => (
-                  <div key={`tech-dup-${name}-${index}`} className={styles.logoItem}>
+                {LOGOS.map(({ name, Icon, url }, index) => (
+                  <a 
+                    key={`tech-dup-${name}-${index}`} 
+                    href={url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.logoItem}
+                  >
                     <Icon className={styles.logoIcon} aria-hidden="true" />
                     <span className={styles.logoText}>{name}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
           </div>
 
+          {/* Ikalawang Marquee Row (Takbong Pakanan) */}
           <div
             className={styles.marqueeMask}
             onMouseEnter={handleMouseEnter}
@@ -140,19 +155,31 @@ export default function Technologies() {
           >
             <div className={styles.marqueeTrack} ref={marqueeRefAlt}>
               <div className={styles.logoRow}>
-                {LOGOS.map(({ name, Icon }, index) => (
-                  <div key={`tech-alt-${name}-${index}`} className={styles.logoItem}>
+                {LOGOS.map(({ name, Icon, url }, index) => (
+                  <a 
+                    key={`tech-alt-${name}-${index}`} 
+                    href={url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.logoItem}
+                  >
                     <Icon className={styles.logoIcon} aria-hidden="true" />
                     <span className={styles.logoText}>{name}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
               <div className={styles.logoRow} aria-hidden="true">
-                {LOGOS.map(({ name, Icon }, index) => (
-                  <div key={`tech-alt-dup-${name}-${index}`} className={styles.logoItem}>
+                {LOGOS.map(({ name, Icon, url }, index) => (
+                  <a 
+                    key={`tech-alt-dup-${name}-${index}`} 
+                    href={url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.logoItem}
+                  >
                     <Icon className={styles.logoIcon} aria-hidden="true" />
                     <span className={styles.logoText}>{name}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>

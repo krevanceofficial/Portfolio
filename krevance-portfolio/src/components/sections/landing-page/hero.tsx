@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -56,7 +56,7 @@ export default function Hero() {
         <section className={styles.heroSection}>
             <div className={styles.heroInner}>
                 <div className={styles.left}>
-                    <span className={styles.eyebrow}>Digital Agency</span>
+                    <span className={styles.eyebrow}>Digital Solutions and Software Development Company</span>
                     <h1 className={styles.title}>
                         Where Startup Visions
                         <br />
@@ -72,9 +72,9 @@ export default function Hero() {
 
                     {/* Lalagyan ng Button Group para magkatabi sila */}
                     <div className={styles.ctaGroup}>
-                        <button type="button" className={styles.cta}>
+                        <Link className={styles.cta} href="/contactus">
                             Let's Build Together &gt;
-                        </button>
+                        </Link>
                         
                         <div className={styles.secondaryLink}>
                             {/* Minimalist Checkmark SVG Icon */}

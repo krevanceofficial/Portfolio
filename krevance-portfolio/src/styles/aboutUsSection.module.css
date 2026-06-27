@@ -10,16 +10,19 @@
     radial-gradient(circle at 12px 12px, rgba(255, 255, 255, 0.08) 2px, transparent 3px);
   background-size: 100% 100%, 36px 36px;
   background-position: center, 0 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .inner {
-  width: min(1200px, 92%);
+  width: min(1350px, 96%); /* Pinalawak ang inner container para sa mas malaking workspace */
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(2rem, 6vw, 4rem);
+  /* Binago: Binigyan ng mas higit na espasyo ang kanang bahagi (1.6fr) kumpara sa kaliwa (0.8fr) */
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+  gap: clamp(1rem, 2.5vw, 3rem);
   align-items: center;
-  padding: clamp(3rem, 6vw, 5rem) 0;
+  padding: clamp(3rem, 6vw, 5rem) 0 0 0; 
   position: relative;
 }
 
@@ -27,6 +30,8 @@
   display: grid;
   gap: 1.1rem;
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  z-index: 10;
+  padding-bottom: clamp(3rem, 6vw, 5rem); 
 }
 
 .eyebrow {
@@ -67,16 +72,99 @@
   color: rgba(238, 241, 237, 0.75);
 }
 
+/* --- PINALAKING LAYOUT NG MGA LARAWAN --- */
+
 .right {
-  min-height: 280px;
+  display: flex;
+  justify-content: flex-end; /* Mas isinandal sa kanan para mas lumaki ang swing space */
+  align-items: flex-end; 
+  width: 100%;
+  align-self: flex-end; 
 }
+
+.imageWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px; /* Tinaasan nang husto ang max restriction (mula 640px/820px) */
+  position: relative;
+}
+
+.memberImageContainer {
+  position: relative;
+  width: 55%; /* Binago: Ginawang 55% para maging dambuhala at pumuno sa space */
+  height: auto;
+  display: block;
+  /* Binago: Dahil mas malaki ang katawan, ginawang -26% ang negative margin 
+     para maganda pa rin ang pagkakasapaw ng mga balikat ng team */
+  margin-right: -20%; 
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.4s ease;
+}
+
+.memberImageContainer:last-child {
+  margin-right: 0;
+}
+
+.memberImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+  transition: filter 0.4s ease;
+}
+
+/* --- PINALAKING HOVER ANIMATION --- */
+
+.memberImageContainer:hover {
+  transform: translateY(-30px) scale(1.08); /* Mas mataas na pag-angat at bahagyang mas malaking zoom scaling */
+  z-index: 99 !important;
+}
+
+.memberImageContainer:hover .memberImage {
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.75));
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
 
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .left {
+    padding-bottom: 0; 
+    text-align: center;
+  }
+
+  .subtitle {
+    margin: 0 auto;
   }
 
   .right {
-    display: none;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .imageWrapper {
+    max-width: 480px; /* Kontroladong restriction para sa tablet screen size */
+  }
+
+  .memberImageContainer {
+    width: 48%;
+    margin-right: -25%;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+    max-width: 350px; /* Kontroladong restriction para sa mobile view */
+  }
+  .memberImageContainer {
+    margin-right: -20%;
   }
 }

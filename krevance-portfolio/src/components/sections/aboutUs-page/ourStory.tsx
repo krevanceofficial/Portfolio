@@ -65,7 +65,7 @@ export default function OurStory() {
             Our Story
           </motion.h2>
           <motion.p className={styles.subtitle} variants={headerItem}>
-            Discover the journey that shaped Krevance
+            Discover the journey behind Krevance
           </motion.p>
         </motion.div>
 
@@ -77,10 +77,7 @@ export default function OurStory() {
           viewport={{ once: true, amount: 0.45 }}
         >
           <p>
-            Krevance was built by a team of designers, developers, and strategists
-            united by one vision: to transform ideas into digital success. Each
-            founder brings a unique expertise, and together they form a
-            collaborative force that turns challenges into opportunities.
+            Krevance was founded by a team of passionate developers, designers, and problem-solvers with a shared goal of helping businesses succeed in the digital world. By combining creativity, technology, and strategic thinking, we create solutions that help brands establish their presence, improve operations, and achieve sustainable growth.
           </p>
         </motion.div>
 
@@ -97,10 +94,7 @@ export default function OurStory() {
             </span>
             <h3 className={styles.cardTitle}>Mission</h3>
             <p className={styles.cardText}>
-              Krevance was built by a team of designers, developers, and strategists
-              united by one vision: to transform ideas into digital success. Each
-              founder brings a unique expertise, and together they form a
-              collaborative force that turns challenges into opportunities.
+              Krevance is committed to creating accessible and innovative digital solutions that combine creativity, functionality, and strategy. Through collaboration and user-focused development, the team aims to help businesses solve challenges and achieve their goals.
             </p>
           </motion.article>
 
@@ -110,10 +104,7 @@ export default function OurStory() {
             </span>
             <h3 className={styles.cardTitle}>Core Values</h3>
             <p className={styles.cardText}>
-              Krevance was built by a team of designers, developers, and strategists
-              united by one vision: to transform ideas into digital success. Each
-              founder brings a unique expertise, and together they form a
-              collaborative force that turns challenges into opportunities.
+              Krevance is guided by creativity, innovation, professionalism, and teamwork. We focus on understanding client needs, delivering reliable solutions, and building long-term partnerships through trust, quality, and continuous growth.
             </p>
           </motion.article>
 
@@ -123,10 +114,7 @@ export default function OurStory() {
             </span>
             <h3 className={styles.cardTitle}>Vision</h3>
             <p className={styles.cardText}>
-              Krevance was built by a team of designers, developers, and strategists
-              united by one vision: to transform ideas into digital success. Each
-              founder brings a unique expertise, and together they form a
-              collaborative force that turns challenges into opportunities.
+              To be a trusted digital partner for startups and businesses, helping turn ideas into meaningful digital experiences that inspire growth, connection, and long-term success.
             </p>
           </motion.article>
         </motion.div>

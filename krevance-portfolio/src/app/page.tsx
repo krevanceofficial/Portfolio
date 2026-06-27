@@ -8,7 +8,7 @@ import InquirySection from "../components/sections/landing-page/inquirySection";
 export default function Home() {
   return (
     <main className="min-h-screen dot">
-      <Nav />
+      {/* <Nav /> */}
       
       {/* Main Content */}
       {/* Hero Content */}
