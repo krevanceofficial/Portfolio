@@ -21,8 +21,8 @@
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: #3b4b40;
-  margin: 0 0 0.6rem;
-  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  margin-bottom: -0.4rem;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
 .title {
@@ -43,6 +43,7 @@
   margin: 0;
   margin-top: 25px;
   align-self: center;
+  padding-left: clamp(2rem, 8vw, 7.5rem);
 }
 
 .body {

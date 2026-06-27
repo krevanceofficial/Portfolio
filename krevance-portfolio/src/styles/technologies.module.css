@@ -1,5 +1,9 @@
 .section {
   padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  position: relative;
+  background-color: #ffffff;
+  background-image: radial-gradient(#d9ddd9 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
 .inner {

@@ -2,7 +2,7 @@
 import { ProjectType, SelectOption, BudgetOption, TimelineOption } from '../types/types';
 
 export const projectTypes: ProjectType[] = [
-  { id: 'app-dev', name: 'Application Development' },
+  { id: 'app-dev', name: 'System Development' },
   { id: 'web-dev', name: 'Web Development' },
   { id: 'mobile-app', name: 'Mobile App' },
   { id: 'ecommerce', name: 'E-Commerce' },

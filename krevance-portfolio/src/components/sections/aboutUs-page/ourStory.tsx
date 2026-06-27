@@ -49,7 +49,7 @@ export default function OurStory() {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} dot`}>
       <div className={styles.inner}>
         <motion.div
           className={styles.header}

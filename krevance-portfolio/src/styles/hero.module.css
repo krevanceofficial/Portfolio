@@ -4,25 +4,22 @@
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
-  padding: clamp(2rem, 4vw, 4rem) 1.25rem;
+  padding: clamp(5rem, 8vw, 7rem) 1.25rem clamp(2rem, 4vw, 4rem);
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
   box-sizing: border-box;
 
-  /* HETO ANG UPGRADE PARA SA SOLID FULL HEIGHT */
-  height: 100dvh; 
   min-height: 100dvh;
-  
-  /* Ginagawa nating Flex container ang buong section pababa */
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Awtomatikong itutulak ang carousel sa pinakailalim */
+  justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .heroInner {
   width: 100%;
   max-width: 1200px;
-  margin: auto 0; /* MAGIC: Hahanapin nito ang gitna ng natitirang space para sa text at stats */
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.7fr);
   gap: clamp(1.5rem, 3vw, 2.5rem);
@@ -41,7 +38,7 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #3f5347;
-  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
 .title {
@@ -180,9 +177,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: auto; /* Siguradong nakadikit sa pinaka-sahig ng section */
   padding-top: 1.5rem;
-  padding-bottom: 1rem; /* Kaunting gap bago ang dulo ng screen */
+  padding-bottom: 1rem;
   box-sizing: border-box;
 }
 

@@ -27,12 +27,12 @@
 }
 
 .eyebrow {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: #3b4b40;
-  margin: 0;
-  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  margin-bottom: -1rem;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
 .title {
@@ -50,6 +50,7 @@
   line-height: 1.6;
   margin: 0;
   color: #3b4b40;
+  margin-right: clamp(2rem, 6vw, 2rem);  /* ← pulls toward center */
 }
 
 .steps {

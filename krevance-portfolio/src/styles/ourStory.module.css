@@ -1,9 +1,9 @@
 .section {
   padding: clamp(3.5rem, 6vw, 5.5rem) 0;
   position: relative;
-  background-image: radial-gradient(rgba(61, 79, 64, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: 0 0;
+  background-color: #ffffff;
+  background-image: radial-gradient(#d9ddd9 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
 .inner {
@@ -49,8 +49,9 @@
   margin: 0 auto 2.6rem;
   padding: 1.4rem 2rem;
   border-radius: 16px;
-  background: #f0f3ed;
+  background: #eef1ed;
   border: 1px solid rgba(47, 61, 49, 0.1);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05);
   color: #2f3d31;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -79,7 +80,7 @@
   text-align: left;
   padding: 1.6rem 1.4rem;
   border-radius: 18px;
-    background: #f0f3ed;
+  background: #eef1ed;
   border: 1px solid rgba(47, 61, 49, 0.2);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;

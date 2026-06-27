@@ -1,7 +1,9 @@
 .section {
   padding: clamp(3.5rem, 6vw, 5.5rem) 0;
-  background-image: radial-gradient(rgba(61, 79, 64, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  position: relative;
+  background-color: #ffffff;
+  background-image: radial-gradient(#d9ddd9 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
 .inner {
@@ -66,7 +68,7 @@
   position: relative;
   border-radius: 16px;
   padding: 1.4rem 1.6rem;
-    background: #f0f3ed;
+  background: #eef1ed;
   border: 1px solid rgba(47, 61, 49, 0.1);
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;

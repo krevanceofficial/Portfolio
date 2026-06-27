@@ -54,7 +54,7 @@ export default function InquirySection() {
 								<div className={styles.checkboxGrid}>
 									<label className={styles.checkItem}>
 										<input type="checkbox" name="service" value="application" />
-										<span>Application Development</span>
+										<span>System Development</span>
 									</label>
 									<label className={styles.checkItem}>
 										<input type="checkbox" name="service" value="graphics" />

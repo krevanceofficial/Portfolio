@@ -23,16 +23,18 @@ const PersonalInfoForm: React.FC<Props> = ({ formData, onUpdate, onNext }) => {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!formData.fullName.trim()) e.fullName = 'Full name is required';
-    
+
     if (!formData.email.trim()) e.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) e.email = 'Invalid email';
-    
-    // Validation para sa eksaktong 9 digits (tinatanggal ang mga spaces o symbols kung mayroon man)
+
     const cleanedPhone = formData.phoneNumber.replace(/\D/g, '');
-    if (!formData.phoneNumber.trim()) {
+
+    if (!cleanedPhone) {
       e.phoneNumber = 'Phone number is required';
-    } else if (cleanedPhone.length !== 11) {
-      e.phoneNumber = 'Phone number must be exactly 9 digits';
+    } else if (cleanedPhone.startsWith('0')) {
+      e.phoneNumber = 'Phone number cannot start with 0';
+    } else if (cleanedPhone.length !== 10) {
+      e.phoneNumber = 'Phone number must be exactly 10 digits';
     }
 
     setErrors(e);
@@ -40,13 +42,18 @@ const PersonalInfoForm: React.FC<Props> = ({ formData, onUpdate, onNext }) => {
   };
 
   const handlePhoneChange = (value: string) => {
-    // Kinukuha lang ang mga numero (digits only)
-    const digitsOnly = value.replace(/\D/g, '');
-    
-    // Haharangin ang pag-type kapag lumampas na sa 11 digits
-    if (digitsOnly.length <= 11) {
-      onUpdate('phoneNumber', digitsOnly);
+    // 1️⃣ Keep digits only
+    let digitsOnly = value.replace(/\D/g, '');
+
+    // 2️⃣ Strip leading zeros (e.g. "0917..." → "917...")
+    digitsOnly = digitsOnly.replace(/^0+/, '');
+
+    // 3️⃣ Limit to 10 digits max
+    if (digitsOnly.length > 10) {
+      digitsOnly = digitsOnly.slice(0, 10);
     }
+
+    onUpdate('phoneNumber', digitsOnly);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -77,8 +84,7 @@ const PersonalInfoForm: React.FC<Props> = ({ formData, onUpdate, onNext }) => {
         countryCode={formData.countryCode}
         phoneNumber={formData.phoneNumber}
         onCountryCodeChange={(c) => onUpdate('countryCode', c)}
-        // Ginamit ang pinasadyang handler sa halip na direktang onUpdate
-        onPhoneNumberChange={handlePhoneChange} 
+        onPhoneNumberChange={handlePhoneChange}
         error={errors.phoneNumber}
       />
 

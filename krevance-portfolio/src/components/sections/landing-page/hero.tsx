@@ -118,7 +118,7 @@ export default function Hero() {
             </div>
 
             {/* --- CAROUSEL SECTION (Walang kailangang baguhin dito, kusa itong mag-aadjust) --- */}
-            <div className={styles.carouselContainer}>
+            {/* <div className={styles.carouselContainer}>
                 <div 
                     className={styles.carouselMask}
                     onMouseEnter={handleMouseEnter}
@@ -141,7 +141,7 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 }

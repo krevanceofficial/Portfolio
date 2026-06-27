@@ -24,29 +24,27 @@
   min-width: 0;
   max-width: 720px;
   display: flex;
-  
-  /* HETO ANG MAHALAGANG DAGDAG */
-  align-self: flex-end; /* Itutulak ang buong box na ito sa pinakailalim ng kaniyang row */
-  
-  /* Panatilihin ang mga ito para sa alignment ng text sa loob */
+  align-self: flex-end;
   align-items: center;
   justify-content: center;
-  text-align: right; /* O gawing 'center' kung gusto mong nakagitna ang mga linya ng text */
+  text-align: right;
+
+  /* 🟢 Push the right block toward the center */
+  padding-left: clamp(2rem, 8vw, 6rem);
 }
 
 .eyebrow {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: #3b4b40;
-  margin: 0 0 0.6rem;
-  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  margin-bottom: -0.2rem;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
   color: #2a3c2f;
-  margin: 0 0 0.8rem;
   letter-spacing: -0.02em;
   font-family: var(--font-zen-dots), "Zen Dots", var(--font-geist-sans), Arial, Helvetica, sans-serif;
   display: inline-block;
@@ -61,9 +59,8 @@
   color: #3f5347;
   max-width: 720px;
   line-height: 1.6;
-  margin: 0 0 2.4rem;
+  margin: 0 0 1rem;
 }
-
 
 .cards {
   display: grid;
@@ -77,11 +74,52 @@
   gap: 0.85rem;
 }
 
+/* ───── Preview (with lively hover + color reveal) ───── */
 .preview {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #d9d9d9;
   border-radius: 24px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+}
+
+.preview:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(42, 60, 47, 0.25);
+}
+
+/* 🟢 Muted by default, full color on hover */
+.preview img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.6s ease;
+  filter: saturate(0.4) brightness(0.92) contrast(0.95);
+}
+
+.preview:hover img {
+  transform: scale(1.08);
+  filter: saturate(1.05) brightness(1.02) contrast(1);
+}
+
+.preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(42, 60, 47, 0) 50%,
+    rgba(42, 60, 47, 0.35) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.preview:hover::after {
+  opacity: 1;
 }
 
 .cardTitle {
@@ -90,7 +128,8 @@
   text-transform: uppercase;
   color: #2f3d31;
   letter-spacing: 0.08em;
-  font-family: var(--font-zen-dots), "Zen Dots", "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  font-family:"AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  font-weight: 600;
 }
 
 .cardDescription {
@@ -151,6 +190,84 @@
   background: #2f3d31;
 }
 
+/* ───── Link Badges (Icon + Label, Primary/Secondary) ───── */
+.linkBadges {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 0.4rem;
+  z-index: 2;
+  opacity: 0.92;
+  transform: translateY(-2px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.preview:hover .linkBadges {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.linkBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 32px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.linkBadge svg {
+  flex-shrink: 0;
+}
+
+.linkBadge:active {
+  transform: translateY(-1px) !important;
+}
+
+/* Primary (Live Site) — filled dark green */
+.linkBadgePrimary {
+  background: rgba(42, 60, 47, 0.95);
+  color: #eef1ed;
+  border: 1.5px solid rgba(42, 60, 47, 0.95);
+}
+
+.linkBadgePrimary:hover {
+  background: #1e2e22;
+  border-color: #1e2e22;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(42, 60, 47, 0.4);
+}
+
+/* Secondary (GitHub) — light with green outline */
+.linkBadgeSecondary {
+  background: rgba(238, 241, 237, 0.95);
+  color: #2a3c2f;
+  border: 1.5px solid rgba(238, 241, 237, 0.95);
+}
+
+.linkBadgeSecondary:hover {
+  background: #2a3c2f;
+  color: #eef1ed;
+  border-color: #2a3c2f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(42, 60, 47, 0.4);
+}
+
+/* ───── Responsive ───── */
 @media (max-width: 1100px) {
   .cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -184,5 +301,17 @@
   .controls {
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+
+  /* Bigger badges on mobile for better tap targets */
+  .linkBadge {
+    height: 36px;
+    padding: 0 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  /* On mobile: always show full color (no hover available) */
+  .preview img {
+    filter: saturate(1) brightness(1) contrast(1);
   }
 }

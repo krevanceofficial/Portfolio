@@ -39,6 +39,36 @@ const PhoneInput: React.FC<Props> = ({
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  // 🟢 Sanitize raw input → strip non-digits, strip leading zeros, max 10
+  const sanitize = (raw: string) => {
+    let digits = raw.replace(/\D/g, '');
+    digits = digits.replace(/^0+/, '');
+    if (digits.length > 10) digits = digits.slice(0, 10);
+    return digits;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onPhoneNumberChange(sanitize(e.target.value));
+  };
+
+  // 🟢 Block "0" as the first character at keystroke level
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
+    const isAtStart = input.selectionStart === 0;
+    const isFirstChar = phoneNumber.length === 0 || isAtStart;
+
+    if (e.key === '0' && isFirstChar) {
+      e.preventDefault();
+    }
+  };
+
+  // 🟢 Sanitize pasted content (handles things like "+639171234567" or "09171234567")
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pasted = e.clipboardData.getData('text');
+    onPhoneNumberChange(sanitize(pasted));
+  };
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.label}>Contact Number*</label>
@@ -79,9 +109,13 @@ const PhoneInput: React.FC<Props> = ({
 
         <input
           type="tel"
+          inputMode="numeric"
+          maxLength={10}
           value={phoneNumber}
-          onChange={(e) => onPhoneNumberChange(e.target.value.replace(/[^0-9]/g, ''))}
-          placeholder="98596377253"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
+          placeholder="9171234567"
           className={`${styles.phoneInput} ${error ? styles.error : ''}`}
         />
       </div>

@@ -4,6 +4,7 @@
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
+/* ───── Header ───── */
 .header {
   display: flex;
   align-items: center;
@@ -21,10 +22,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, opacity 0.15s ease;
 }
 
-.navButton:hover {
+.navButton:hover:not(:disabled) {
   background: rgba(42, 60, 47, 0.08);
 }
 
@@ -33,6 +34,36 @@
   height: 16px;
 }
 
+.navButtonDisabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Clickable header label */
+.headerLabel {
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2a3c2f;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.headerLabel:hover {
+  background: rgba(42, 60, 47, 0.08);
+}
+
+.headerLabel:focus-visible {
+  outline: 2px solid #2a3c2f;
+  outline-offset: 2px;
+}
+
+/* Static label (kept for compatibility) */
 .monthLabel {
   font-size: 0.95rem;
   font-weight: 500;
@@ -40,6 +71,7 @@
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
+/* ───── Day Names Row ───── */
 .daysRow {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -55,6 +87,7 @@
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
 
+/* ───── Days Grid ───── */
 .daysGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -91,8 +124,63 @@
 .dayOutsideMonth {
   color: #d1c9c0;
   cursor: default;
+  pointer-events: none;
 }
 
 .dayOutsideMonth:hover {
   background: transparent;
+}
+
+/* Past days — in current month but before today */
+.dayPast {
+  color: #c5bdb5;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: line-through;
+  text-decoration-color: rgba(197, 189, 181, 0.5);
+}
+
+/* ───── Month Picker Grid ───── */
+.monthsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 12px 4px;
+}
+
+.monthItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2a3c2f;
+  transition: all 0.15s ease;
+  font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+.monthItem:hover:not(:disabled) {
+  background: rgba(42, 60, 47, 0.1);
+}
+
+.monthItemActive {
+  background: #2a3c2f !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.monthItemActive:hover {
+  background: #1e2e22 !important;
+}
+
+/* Past months — disabled and grayed out */
+.monthItemDisabled {
+  color: #c5bdb5;
+  cursor: not-allowed;
+  pointer-events: none;
 }

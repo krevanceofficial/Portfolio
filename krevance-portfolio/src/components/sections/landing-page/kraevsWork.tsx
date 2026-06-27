@@ -1,35 +1,51 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import styles from "../../../styles/kraevsWork.module.css";
+import OLImage from "../../images/Online-exam.jpg";
+import OmegaImage from "../../images/omega-ecom.jpg";
 
 interface ProjectItem {
-	id: string;
+	id: number;
 	title: string;
 	description: string;
+	image?: string | StaticImageData;
+	liveLink?: string;
+	githubLink?: string;
 }
 
 const PROJECTS: ProjectItem[] = [
 	{
-		id: "burvon-website",
-		title: "Burvon Website",
-		description: "A modern jewelry website featuring 3D viewing and virtual try-on.",
+		id: 1,
+		title: "Online Examination with Proctoring System",
+		description:
+			"A web-based examination platform with automated proctoring features to ensure academic integrity.",
+		image: OLImage,
+		githubLink:
+			"https://github.com/karinaonly/Online-Examination-with-Proctoring-System",
 	},
 	{
-		id: "burvon-website-2",
-		title: "Burvon Website",
-		description: "A modern jewelry website featuring 3D viewing and virtual try-on.",
+		id: 2,
+		title: "Omega E-Commerce System",
+		description:
+			"Omega-Ecommerce is a full-stack e-commerce web application. It features a modern, responsive design and backend architecture.",
+		image: OmegaImage,
+		liveLink: "https://omega.synchores.com",
+		githubLink: "https://github.com/Synchores-Dhaniel/E-Commerce-Project",
 	},
 	{
-		id: "burvon-website-3",
+		id: 3,
 		title: "Burvon Website",
-		description: "A modern jewelry website featuring 3D viewing and virtual try-on.",
+		description:
+			"A modern jewelry website featuring 3D viewing and virtual try-on.",
 	},
 	{
-		id: "burvon-website-4",
+		id: 4,
 		title: "Burvon Website",
-		description: "A modern jewelry website featuring 3D viewing and virtual try-on.",
+		description:
+			"A modern jewelry website featuring 3D viewing and virtual try-on.",
 	},
 ];
 
@@ -71,13 +87,58 @@ export default function KraevsWork() {
 				</header>
 
 				<div className={styles.cards}>
-					{visibleProjects.map((project, idx) => (
-						<article key={`${project.id}-${idx}`} className={styles.card}>
-							<div className={styles.preview} aria-hidden="true" />
-							<h3 className={styles.cardTitle}>{project.title}</h3>
-							<p className={styles.cardDescription}>{project.description}</p>
-						</article>
-					))}
+					{visibleProjects.map((project, idx) => {
+						const hasLinks = project.liveLink || project.githubLink;
+
+						return (
+							<article key={`${project.id}-${idx}`} className={styles.card}>
+								<div className={styles.preview}>
+									{project.image && (
+										<Image
+											src={project.image}
+											alt={project.title}
+											fill
+											style={{ objectFit: "cover" }}
+											sizes="(max-width: 768px) 100vw, 33vw"
+										/>
+									)}
+
+									{hasLinks && (
+										<div className={styles.linkBadges}>
+											{project.liveLink && (
+												<a
+													href={project.liveLink}
+													target="_blank"
+													rel="noopener noreferrer"
+													className={`${styles.linkBadge} ${styles.linkBadgePrimary}`}
+													aria-label={`Visit live site of ${project.title}`}
+												>
+													<ExternalLink size={13} strokeWidth={2.2} />
+													<span>Live</span>
+												</a>
+											)}
+
+											{project.githubLink && (
+												<a
+													href={project.githubLink}
+													target="_blank"
+													rel="noopener noreferrer"
+													className={`${styles.linkBadge} ${styles.linkBadgeSecondary}`}
+													aria-label={`View GitHub repository of ${project.title}`}
+												>
+													<Github size={13} strokeWidth={2.2} />
+													<span>Code</span>
+												</a>
+											)}
+										</div>
+									)}
+								</div>
+
+								<h3 className={styles.cardTitle}>{project.title}</h3>
+								<p className={styles.cardDescription}>{project.description}</p>
+							</article>
+						);
+					})}
 				</div>
 
 				<div className={styles.controls}>
