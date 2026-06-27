@@ -1,16 +1,10 @@
 // src/hooks/useMultiStepForm.ts
-<<<<<<< HEAD
-import { useState, useCallback } from 'react';
-import { FormData } from '../types/types';
-
-=======
 import { useState, useCallback, useEffect } from 'react';
 import { FormData } from '../types/types';
 
 const STORAGE_KEY_FORM = 'krevance_formData';
 const STORAGE_KEY_STEP = 'krevance_currentStep';
 
->>>>>>> loel
 const initialFormData: FormData = {
   fullName: '',
   email: '',
@@ -114,11 +108,6 @@ export function useMultiStepForm(totalSteps: number) {
     []
   );
 
-<<<<<<< HEAD
-  const resetForm = useCallback(() => {
-    setCurrentStep(1);
-    setFormData(initialFormData);
-=======
   /** Reset everything – including localStorage. */
   const resetForm = useCallback(() => {
     setCurrentStep(1);
@@ -131,7 +120,6 @@ export function useMultiStepForm(totalSteps: number) {
         // ignore
       }
     }
->>>>>>> loel
   }, []);
 
   return {
@@ -143,9 +131,6 @@ export function useMultiStepForm(totalSteps: number) {
     updateFormData,
     resetForm,
     totalSteps,
-<<<<<<< HEAD
-  };
-=======
     /** Storage keys – exposed so callers can clear them manually too. */
     STORAGE_KEY_FORM,
     STORAGE_KEY_STEP,
@@ -162,5 +147,4 @@ export function clearFormStorage() {
       // ignore
     }
   }
->>>>>>> loel
 }
