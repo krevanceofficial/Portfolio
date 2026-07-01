@@ -8,8 +8,8 @@ interface Props {
 
 const CostEstimate: React.FC<Props> = ({ breakdown }) => {
   const hasData = breakdown.basePrice !== null;
-  const formatPrice = (price: number | null) => {
-    if (price === null) return '—';
+  const formatPrice = (price: number | null | undefined) => {
+    if (price === null || price === undefined) return '—';
     if (price === 0) return '₱0';
     return `₱${price.toLocaleString()}`;
   };

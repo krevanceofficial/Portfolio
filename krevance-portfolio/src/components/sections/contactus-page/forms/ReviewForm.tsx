@@ -16,7 +16,7 @@ interface Props {
   formData: FormData;
   onPrev: () => void;
   onEditStep: (step: number) => void;
-  onSubmit: () => void;
+  onSubmit: () => void; // now means "Continue to Scheduling"
 }
 
 const EditIcon = () => (
@@ -142,7 +142,7 @@ const ReviewForm: React.FC<Props> = ({ formData, onPrev, onEditStep, onSubmit })
           Back
         </Button>
         <Button onClick={onSubmit} icon={<ChevronRight />}>
-          Start the Conversation
+          Continue to Scheduling
         </Button>
       </div>
     </div>

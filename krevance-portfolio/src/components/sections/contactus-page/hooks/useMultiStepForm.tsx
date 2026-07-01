@@ -10,7 +10,7 @@ const initialFormData: FormData = {
   email: '',
   countryCode: '+63',
   phoneNumber: '',
-  projectType: '',
+  projectType: null,
   projectStage: '',
   primaryGoal: '',
   budgetLevel: '',

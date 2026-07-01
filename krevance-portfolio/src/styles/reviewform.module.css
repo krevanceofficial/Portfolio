@@ -103,3 +103,52 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── Meeting section (Review step) ─────────────────────────────────────── */
+.meetingCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(37, 58, 39, 0.05);
+  border: 1px solid rgba(37, 58, 39, 0.15);
+  border-radius: 14px;
+}
+
+.meetingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #253A27;
+  color: #ECEFED;
+  flex-shrink: 0;
+}
+
+.meetingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meetingDate {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #253A27;
+  letter-spacing: 0.01em;
+}
+
+.meetingTime {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #5a6b5e;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.meetingEmpty {
+  padding: 0.75rem 0;
+}

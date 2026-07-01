@@ -7,7 +7,7 @@ export interface FormData {
   phoneNumber: string;
   
   // Step 2
-  projectType: string;
+  projectType: number | null;   // ← was string
   projectStage: string;
   primaryGoal: string;
   
@@ -20,7 +20,7 @@ export interface FormData {
   projectName: string;
   projectDescription: string;
   
-  // Sidebar
+  // Sidebar / booking
   selectedDate: Date | null;
   selectedTime: string;
   addOns: string[];
@@ -49,7 +49,8 @@ export interface CostBreakdown {
 export interface AddOn {
   id: string;
   name: string;
-  price: number;
+  price: number;              // numeric price for calculations
+  priceLabel?: string;        // optional display override (e.g. "Starting at ₱5,000")
 }
 
 export interface NavItem {
@@ -64,7 +65,7 @@ export interface Step {
 }
 
 export interface ProjectType {
-  id: string;
+  id: number;
   name: string;
 }
 

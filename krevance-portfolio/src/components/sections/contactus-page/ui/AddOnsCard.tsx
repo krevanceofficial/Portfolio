@@ -10,7 +10,12 @@ interface Props {
   projectTypeSelected: boolean;
 }
 
-const AddOnsCard: React.FC<Props> = ({ addOns, selectedAddOns, onToggleAddOn, projectTypeSelected }) => {
+const AddOnsCard: React.FC<Props> = ({
+  addOns,
+  selectedAddOns,
+  onToggleAddOn,
+  projectTypeSelected,
+}) => {
   return (
     <div className={styles.card}>
       <h3 className={styles.heading}>Add-ons & Extra</h3>
@@ -22,13 +27,19 @@ const AddOnsCard: React.FC<Props> = ({ addOns, selectedAddOns, onToggleAddOn, pr
           </svg>
           <p className={styles.emptyText}>Add-ons appear after you choose a project type.</p>
         </div>
+      ) : addOns.length === 0 ? (
+        <div className={styles.empty}>
+          <p className={styles.emptyText}>No add-ons available for this project type.</p>
+        </div>
       ) : (
         <div className={styles.list}>
           {addOns.map((addOn) => (
             <div key={addOn.id} className={styles.item}>
               <div className={styles.itemInfo}>
                 <span className={styles.itemName}>{addOn.name}</span>
-                <span className={styles.itemPrice}>₱{addOn.price.toLocaleString()}</span>
+                <span className={styles.itemPrice}>
+                  {addOn.priceLabel ?? `₱${addOn.price.toLocaleString()}`}
+                </span>
               </div>
               <Toggle
                 checked={selectedAddOns.includes(addOn.id)}

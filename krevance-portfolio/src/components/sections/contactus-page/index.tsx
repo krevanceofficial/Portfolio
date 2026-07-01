@@ -12,92 +12,202 @@ import ReviewForm from './forms/ReviewForm';
 import CostEstimate from './ui/CostEstimate';
 import BookMeetingCard from './BookMeetingCard';
 import AddOnsCard from './ui/AddOnsCard';
+import Button from './ui/Button';
 import { useMultiStepForm, clearFormStorage } from './hooks/useMultiStepForm';
 import { AddOn, CostBreakdown, Step } from './types/types';
+import { getBudgetPrice, getAddOns  } from './utils/labels';               // ← ADDED
 import styles from '../../../styles/contactus.module.css';
 import MobileSummarySheet from './MobileSummarySheet';
 import MobileSummaryBar from './MobileSummaryBar';
 
+// ─── 5 numbered steps — booking happens AFTER review, unnumbered ────────────
 const steps: Step[] = [
-  { number: 1, title: 'Tell Us About Yourself', description: "Let's start with the basics so we know how to reach you." },
-  { number: 2, title: "What's Your Project About?", description: "Help us understand what you're looking to build." },
-  { number: 3, title: 'Project Scope', description: "Let's align the project with your goals and budget." },
-  { number: 4, title: 'Share Your Vision', description: 'Tell us anything that can help us better understand your project.' },
-  { number: 5, title: 'Review & Submit', description: "We'll review your details and get back to you within 24–48 hours." },
+  {
+    number: 1,
+    title: 'Tell Us About Yourself',
+    description: "Let's start with the basics so we know how to reach you.",
+  },
+  {
+    number: 2,
+    title: "What's Your Project About?",
+    description: "Help us understand what you're looking to build.",
+  },
+  {
+    number: 3,
+    title: 'Project Scope',
+    description: "Let's align the project with your goals and budget.",
+  },
+  {
+    number: 4,
+    title: 'Share Your Vision',
+    description: 'Tell us anything that can help us better understand your project.',
+  },
+  {
+    number: 5,
+    title: 'Review & Submit',
+    description: "We'll review your details and get back to you within 24–48 hours.",
+  },
 ];
 
-const availableAddOns: AddOn[] = [
-  { id: 'webpage', name: 'Additional web page', price: 1500 },
-  { id: 'features', name: 'Additional features', price: 1500 },
-  { id: 'seo', name: 'SEO starter pack', price: 4500 },
-  { id: 'social', name: 'Social media branding kit', price: 1500 },
-];
+// ─── Static data ──────────────────────────────────────────────────────────────
+// const availableAddOns: AddOn[] = [
+//   { id: 'webpage',  name: 'Additional web page',       price: 1500 },
+//   { id: 'features', name: 'Additional features',       price: 1500 },
+//   { id: 'seo',      name: 'SEO starter pack',          price: 4500 },
+//   { id: 'social',   name: 'Social media branding kit', price: 1500 },
+// ];
 
-const budgetPriceMap: Record<string, number> = {
-  starting: 20000, small: 40000, mid: 80000, large: 150000, enterprise: 300000,
-};
+// ❌ REMOVED — budgetPriceMap is no longer needed.
+// Budget pricing now comes from getBudgetPrice() in labels.ts,
+// which is dependent on the selected project type.
 
 const timelineMultiplierMap: Record<string, { multiplier: number; label: string }> = {
-  asap: { multiplier: 1.35, label: 'Rush (+35%)' },
-  '1month': { multiplier: 1.15, label: 'Fast (+15%)' },
-  '3months': { multiplier: 1, label: 'Standard (1x)' },
-  flexible: { multiplier: 0.9, label: 'Relaxed (-10%)' },
+  asap:      { multiplier: 1.35, label: 'Rush (+40%)'    },
+  '1month':  { multiplier: 1.15, label: 'Fast (+20%)'    },
+  '3months': { multiplier: 1,    label: 'Standard (1x)'  },
+  flexible:  { multiplier: 1,  label: 'Standard (1x)' }, // ← also fixed duplicate label bug
 };
 
+// ─── Shared chevron icons ─────────────────────────────────────────────────────
+const ChevronRight = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="100%" height="100%">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+  </svg>
+);
+
+const ChevronLeft = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="100%" height="100%">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+  </svg>
+);
+
+// ─── Main component ───────────────────────────────────────────────────────────
 const ContactUsSection: React.FC = () => {
-  const { currentStep, formData, nextStep, prevStep, goToStep, updateFormData, resetForm, totalSteps } =
-    useMultiStepForm(5);
-  const [submitted, setSubmitted] = useState(false);
+  const {
+    currentStep,
+    formData,
+    nextStep,
+    prevStep,
+    goToStep,
+    updateFormData,
+    resetForm,
+    totalSteps,
+  } = useMultiStepForm(5);
+
+  const [submitted,   setSubmitted]   = useState(false);
+  const [showBooking, setShowBooking] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
+  const availableAddOns = useMemo(
+      () => getAddOns(formData.projectType),
+      [formData.projectType]
+    );
+
+  // ─── Cost breakdown ───────────────────────────────────────────────────────
   const costBreakdown: CostBreakdown = useMemo(() => {
-    const basePrice = formData.budgetLevel ? budgetPriceMap[formData.budgetLevel] : null;
-    const timelineData = formData.timeline ? timelineMultiplierMap[formData.timeline] : null;
+    const basePrice    = formData.budgetLevel ? getBudgetPrice(formData.budgetLevel) : null;
+    const timelineData = formData.timeline    ? timelineMultiplierMap[formData.timeline] : null;
+
+    // Only sum add-ons that still exist for the current project type
     const addOnsTotal = formData.addOns.reduce((sum, id) => {
       const addOn = availableAddOns.find((a) => a.id === id);
-      return sum + (addOn?.price || 0);
+      return sum + (addOn?.price ?? 0);
     }, 0);
 
     let startsAt: number | null = null;
     if (basePrice !== null) {
-      const multiplier = timelineData?.multiplier ?? 1;
-      startsAt = Math.round(basePrice * multiplier + addOnsTotal);
+      startsAt = Math.round(basePrice * (timelineData?.multiplier ?? 1) + addOnsTotal);
     }
-
-    const progress = basePrice ? Math.min((basePrice / 300000) * 100, 100) : 0;
 
     return {
       basePrice,
       timelineMultiplier: timelineData?.label ?? null,
-      selectedAddOns: addOnsTotal,
+      selectedAddOns:     addOnsTotal,
       startsAt,
-      sliderProgress: progress,
+      sliderProgress:     basePrice ? Math.min((basePrice / 300000) * 100, 100) : 0,
     };
-  }, [formData.budgetLevel, formData.timeline, formData.addOns]);
+  }, [formData.budgetLevel, formData.timeline, formData.addOns, availableAddOns]);
 
-  const currentStepData = steps[currentStep - 1];
+  // ─── Helpers ──────────────────────────────────────────────────────────────
+  const toggleAddOn = (id: string) => {
+    const current = formData.addOns;
+    updateFormData(
+      'addOns',
+      current.includes(id) ? current.filter((a) => a !== id) : [...current, id],
+    );
+  };
 
+
+  const meetingDisplay =
+    formData.selectedDate && formData.selectedTime
+      ? `${formData.selectedDate.toLocaleDateString('en-US', {
+          month: 'short',
+          day:   'numeric',
+        })} · ${formData.selectedTime}`
+      : '';
+
+  const handleContinueToBooking = () => {
+    setShowBooking(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleFinalSubmit = () => {
+    clearFormStorage();
+    resetForm();
+    setShowBooking(false);
+    setSubmitted(true);
+  };
+
+  const handleBackToReview = () => {
+    setShowBooking(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ─── Step renderer ────────────────────────────────────────────────────────
   const renderForm = () => {
     switch (currentStep) {
       case 1:
-        return <PersonalInfoForm formData={formData} onUpdate={updateFormData} onNext={nextStep} />;
+        return (
+          <PersonalInfoForm
+            formData={formData}
+            onUpdate={updateFormData}
+            onNext={nextStep}
+          />
+        );
       case 2:
-        return <ProjectTypeForm formData={formData} onUpdate={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+        return (
+          <ProjectTypeForm
+            formData={formData}
+            onUpdate={updateFormData}
+            onNext={nextStep}
+            onPrev={prevStep}
+          />
+        );
       case 3:
-        return <TimelineForm formData={formData} onUpdate={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+        return (
+          <TimelineForm
+            formData={formData}
+            onUpdate={updateFormData}
+            onNext={nextStep}
+            onPrev={prevStep}
+          />
+        );
       case 4:
-        return <AddOnsForm formData={formData} onUpdate={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+        return (
+          <AddOnsForm
+            formData={formData}
+            onUpdate={updateFormData}
+            onNext={nextStep}
+            onPrev={prevStep}
+          />
+        );
       case 5:
         return (
           <ReviewForm
             formData={formData}
             onPrev={prevStep}
             onEditStep={goToStep}
-            onSubmit={() => {
-              clearFormStorage();
-              resetForm();
-              setSubmitted(true);
-            }}
+            onSubmit={handleContinueToBooking}
           />
         );
       default:
@@ -105,29 +215,11 @@ const ContactUsSection: React.FC = () => {
     }
   };
 
-  const toggleAddOn = (id: string) => {
-    const current = formData.addOns;
-    updateFormData(
-      'addOns',
-      current.includes(id) ? current.filter((a) => a !== id) : [...current, id]
-    );
-  };
-
-  // Format meeting display text
-  const meetingDisplay = formData.selectedDate && formData.selectedTime
-    ? `${formData.selectedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${formData.selectedTime}`
-    : '';
-
-  // Reusable sidebar content
+  // ─── Sidebar ────────────────────────────────────────────────────────────
   const sidebarContent = (
     <>
       <CostEstimate breakdown={costBreakdown} />
-      <BookMeetingCard
-        selectedDate={formData.selectedDate}
-        onDateSelect={(date) => updateFormData('selectedDate', date)}
-        selectedTime={formData.selectedTime}
-        onTimeSelect={(time) => updateFormData('selectedTime', time)}
-      />
+
       <AddOnsCard
         addOns={availableAddOns}
         selectedAddOns={formData.addOns}
@@ -137,6 +229,7 @@ const ContactUsSection: React.FC = () => {
     </>
   );
 
+  // ─── Success screen ─────────────────────────────────────────────────────
   if (submitted) {
     return (
       <section className={styles.section}>
@@ -145,12 +238,18 @@ const ContactUsSection: React.FC = () => {
             <div className={styles.successInner}>
               <div className={styles.successIcon}>
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <h1 className={styles.successTitle}>Thank You!</h1>
               <p className={styles.successText}>
-                Your project inquiry has been submitted successfully. We&apos;ll be in touch within 24–48 hours.
+                Your project inquiry has been submitted successfully.
+                We&apos;ll be in touch within 24–48 hours.
               </p>
             </div>
           </div>
@@ -159,11 +258,35 @@ const ContactUsSection: React.FC = () => {
     );
   }
 
+  // ─── Booking screen ─────────────────────────────────────────────────────
+  if (showBooking) {
+    return (
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <div className={styles.bookingLayout}>
+            <BookingScreen
+              selectedDate={formData.selectedDate}
+              selectedTime={formData.selectedTime}
+              onDateSelect={(date) => updateFormData('selectedDate', date)}
+              onTimeSelect={(time) => updateFormData('selectedTime', time)}
+              onBack={handleBackToReview}
+              onConfirm={handleFinalSubmit}
+            />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // ─── Main multi-step form render ───────────────────────────────────────
+  const currentStepData = steps[currentStep - 1];
+
   return (
     <>
       <section className={styles.section}>
         <div className={styles.inner}>
           <div className={styles.layout}>
+
             <div className={styles.formColumn}>
               <FormSection
                 currentStep={currentStep}
@@ -175,22 +298,20 @@ const ContactUsSection: React.FC = () => {
               </FormSection>
             </div>
 
-            {/* Desktop sidebar (hidden on mobile via CSS) */}
             <div className={styles.sidebarColumn}>
               <SidebarSection>{sidebarContent}</SidebarSection>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Mobile-only sticky bottom bar */}
       <MobileSummaryBar
         breakdown={costBreakdown}
         meetingTime={meetingDisplay}
         onOpen={() => setIsSheetOpen(true)}
       />
 
-      {/* Mobile bottom sheet drawer */}
       <MobileSummarySheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)}>
         {sidebarContent}
       </MobileSummarySheet>
@@ -199,3 +320,58 @@ const ContactUsSection: React.FC = () => {
 };
 
 export default ContactUsSection;
+
+// ─── BookingScreen ──────────────────────────────────────────────────────────
+interface BookingScreenProps {
+  selectedDate: Date | null;
+  selectedTime: string;
+  onDateSelect: (date: Date) => void;
+  onTimeSelect: (time: string) => void;
+  onBack: () => void;
+  onConfirm: () => void;
+}
+
+const BookingScreen: React.FC<BookingScreenProps> = ({
+  selectedDate,
+  selectedTime,
+  onDateSelect,
+  onTimeSelect,
+  onBack,
+  onConfirm,
+}) => {
+  const hasSelection = !!(selectedDate && selectedTime);
+
+  return (
+    <div className={styles.bookingScreen}>
+      <div className={styles.bookingHeader}>
+        <h1 className={styles.bookingTitle}>Let&apos;s Schedule a Call</h1>
+        <p className={styles.bookingSubtitle}>
+          Pick a date and time that works for you
+        </p>
+      </div>
+
+      <BookMeetingCard
+        selectedDate={selectedDate}
+        onDateSelect={onDateSelect}
+        selectedTime={selectedTime}
+        onTimeSelect={onTimeSelect}
+      />
+
+      <hr className={styles.divider} />
+
+      <div className={styles.actions}>
+        <Button
+          variant="outline"
+          onClick={onBack}
+          icon={<ChevronLeft />}
+          iconPosition="left"
+        >
+          Back to Review
+        </Button>
+        <Button onClick={onConfirm} icon={<ChevronRight />} fullWidth>
+          {hasSelection ? 'Confirm & Submit' : 'Skip & Submit'}
+        </Button>
+      </div>
+    </div>
+  );
+};

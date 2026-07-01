@@ -51,9 +51,16 @@ const ProjectTypeForm: React.FC<Props> = ({ formData, onUpdate, onNext, onPrev }
             <RadioCard
               key={t.id}
               label={t.name}
-              value={t.id}
-              selected={formData.projectType === t.id}
-              onClick={(v) => onUpdate('projectType', v)}
+              value={String(t.id)}                                    // ← convert number → string
+              selected={String(formData.projectType) === String(t.id)}// ← compare as strings
+              onClick={(v) => {
+                const newType = Number(v);                            // ← convert back to number
+                onUpdate('projectType', newType);
+                // Reset dependent field so a stale budget doesn't linger
+                if (formData.projectType !== newType) {
+                  onUpdate('budgetLevel', '');
+                }
+              }}
             />
           ))}
         </div>

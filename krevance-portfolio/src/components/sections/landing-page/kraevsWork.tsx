@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import styles from "../../../styles/kraevsWork.module.css";
+import IQueueImage from "../../images/iQueue.png";
+import DeliveryLogsImage from "../../images/DeliveryLogs.png";
 import OLImage from "../../images/Online-exam.jpg";
 import OmegaImage from "../../images/omega-ecom.jpg";
 
@@ -37,15 +39,19 @@ const PROJECTS: ProjectItem[] = [
 	},
 	{
 		id: 3,
-		title: "Burvon Website",
+		title: "Delivery Logs",
 		description:
-			"A modern jewelry website featuring 3D viewing and virtual try-on.",
+			"A web-based system that records, tracks, and manages delivery transactions. It helps monitor delivery status, maintain accurate logs, and improve the efficiency and organization of delivery operations.",
+		image: DeliveryLogsImage,
+		githubLink: "https://github.com/Naksu14/Delivery-Logs-System",
 	},
 	{
 		id: 4,
-		title: "Burvon Website",
+		title: "iQueue",
 		description:
-			"A modern jewelry website featuring 3D viewing and virtual try-on.",
+			"iQueue is an integrated, smart queue management system designed to transition the Registrar and Accounting Offices  from manual, paper-based workflows into an automated, digital environment.",
+		image: IQueueImage,
+		githubLink: "https://github.com/Naksu14/iQueue_Web-System",
 	},
 ];
 

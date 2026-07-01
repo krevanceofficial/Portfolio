@@ -6,7 +6,8 @@ import RadioCard from '../ui/RadioCard';
 import Select from '../ui/Select';
 import { FormData } from '../types/types';
 import {
-  budgetOptions,
+  getBudgetOptions,          // ← use the helper instead
+  getProjectTypeLabel,       // ← optional: for a nicer section label
   timelineOptions,
   referralOptions,
 } from '../utils/labels';
@@ -33,10 +34,13 @@ const ChevronLeft = () => (
 const TimelineForm: React.FC<Props> = ({ formData, onUpdate, onNext, onPrev }) => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Get the budget tiers for the CURRENTLY selected project type
+  const budgetOptions = getBudgetOptions(formData.projectType);
+
   const validate = () => {
     const e: Record<string, string> = {};
     if (!formData.budgetLevel) e.budgetLevel = 'Required';
-    if (!formData.timeline) e.timeline = 'Required';
+    if (!formData.timeline)    e.timeline    = 'Required';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -44,18 +48,35 @@ const TimelineForm: React.FC<Props> = ({ formData, onUpdate, onNext, onPrev }) =
   return (
     <div className={styles.form}>
       <div className={styles.section}>
-        <label className={styles.sectionLabel}>What is your budget level?*</label>
-        <div className={styles.grid}>
-          {budgetOptions.map((o) => (
-            <RadioCard
-              key={o.id}
-              label={o.label}
-              value={o.id}
-              selected={formData.budgetLevel === o.id}
-              onClick={(v) => onUpdate('budgetLevel', v)}
-            />
-          ))}
-        </div>
+        <label className={styles.sectionLabel}>
+          What is your budget level
+          {formData.projectType
+            ? ` for ${getProjectTypeLabel(formData.projectType)}?`
+            : '?'}
+          *
+        </label>
+
+        {budgetOptions.length === 0 ? (
+          <p className={styles.helperText}>
+            Please select a project type in the previous step to see available budget tiers.
+          </p>
+        ) : (
+          <div className={styles.grid}>
+            {budgetOptions.map((o) => (
+              <RadioCard
+                key={o.id}
+                label={`${o.label}`}
+                value={o.id}
+                selected={formData.budgetLevel === o.id}
+                onClick={(v) => onUpdate('budgetLevel', v)}
+              />
+            ))}
+          </div>
+        )}
+
+        {errors.budgetLevel && (
+          <p className={styles.errorText}>{errors.budgetLevel}</p>
+        )}
       </div>
 
       <div className={styles.section}>
@@ -71,6 +92,9 @@ const TimelineForm: React.FC<Props> = ({ formData, onUpdate, onNext, onPrev }) =
             />
           ))}
         </div>
+        {errors.timeline && (
+          <p className={styles.errorText}>{errors.timeline}</p>
+        )}
       </div>
 
       <Select

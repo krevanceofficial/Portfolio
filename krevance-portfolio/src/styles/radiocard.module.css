@@ -54,3 +54,7 @@
   font-weight: 500;
   font-family: "AvantGarde Bk BT", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
 }
+
+.cardCentered {
+  justify-content: center;
+}
