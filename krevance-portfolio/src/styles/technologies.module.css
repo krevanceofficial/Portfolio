@@ -102,3 +102,11 @@
   text-transform: lowercase;
   font-weight: 600;
 }
+
+
+@media (max-width: 480px) { 
+  .title {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    line-height: 1.2;
+  }
+}

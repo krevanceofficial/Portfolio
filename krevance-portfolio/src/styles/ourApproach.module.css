@@ -154,4 +154,11 @@
     margin-bottom: -1.5rem;
   }
 
+  .subtitle {
+    justify-content: flex-start;
+    text-align: left;
+    margin-left: 1;
+
+  }
+
 }

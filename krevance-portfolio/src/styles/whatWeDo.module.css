@@ -266,6 +266,12 @@
   .listItem {
     padding: 0.85rem 1rem;
   }
+  .headerNote {
+    justify-content: flex-start;
+    text-align: left;
+    margin-left: -30;
+
+  }
 
   .detailCard {
     padding: 1.5rem;

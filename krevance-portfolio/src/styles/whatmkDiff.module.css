@@ -157,19 +157,31 @@
 
 
 @media (max-width: 480px) {
-
   .title {
     font-size: clamp(1.5rem, 5vw, 2.2rem);
   }
+  
   .grid {
+    grid-template-columns: 1fr !important; /* Force single column track */
     gap: 1rem;
   }
+  
   .card {
+    grid-column: 1 / -1 !important; /* Forces every single card to span from start to finish line */
     padding: 1.2rem 1.4rem;
   }
+
+  /* Explicitly reset the 4th and 5th cards to behave like normal grid items */
+  .card:nth-child(4),
+  .card:nth-child(5) {
+    grid-column: 1 / -1 !important;
+    transform: none;
+  }
+  
   .cardTitle {
     font-size: 0.85rem;
   }
+  
   .cardText {
     font-size: 0.75rem;
   }

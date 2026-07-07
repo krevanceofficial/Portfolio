@@ -288,7 +288,9 @@
   .headerRight {
     justify-content: flex-start;
     text-align: left;
+    margin-left: -30;
   }
+
 
   .cards {
     grid-template-columns: 1fr;

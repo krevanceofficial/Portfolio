@@ -6,6 +6,7 @@ import styles from "../../../styles/nav.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import navLogo from "../../images/navlogo.svg";
+import mobileViewLogo from "../../images/mobile_view_logo.svg";
 import logoIcon from "../../images/logo.png";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
@@ -331,7 +332,7 @@ export default function Nav() {
               }}
             >
               <Image
-                src={navLogo}
+                src={mobileViewLogo}
                 alt="Logo"
                 width={140}
                 height={50}

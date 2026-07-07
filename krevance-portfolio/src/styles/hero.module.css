@@ -321,7 +321,14 @@
 /* ==========================================================================
    4. SMALL PHONES RESPONSIVENESS (max-width: 480px)
    ========================================================================== */
+/* ==========================================================================
+   4. SMALL PHONES RESPONSIVENESS (max-width: 480px)
+   ========================================================================== */
 @media (max-width: 480px) {
+
+  .heroInner{
+    margin-top: -4rem;
+  }
   .title {
     max-width: 100%; /* Sa napakaliit na screen dito na siya pwedeng mag-fluid full width */
     font-size: clamp(1.5rem, 5vw, 2.2rem);
@@ -344,5 +351,26 @@
   .secondaryLink{
     font-size: 1rem;
     margin-top: -0.5rem;
+  }
+
+  /* --- NEW UPDATES FOR REDUCED STATS SPACING --- */
+  .statsList {
+    gap: 0.2rem; /* Tightens space between list items if gap is applied */
+  }
+
+  .statItem {
+    padding: 0.75rem 0; /* Reduced from 1.5rem to 0.75rem */
+  }
+
+  .divider {
+    height: 1.8rem; /* Shortened the divider line to match tighter layout */
+  }
+
+  .statLabel {
+    font-size: 0.75rem; /* Slightly smaller for better fit */
+  }
+
+  .statText {
+    gap: 0.1rem; /* Brings the title and subtext closer together */
   }
 }

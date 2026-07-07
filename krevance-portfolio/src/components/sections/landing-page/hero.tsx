@@ -90,7 +90,7 @@ export default function Hero() {
                 <div className={styles.right}>
                     <ul className={styles.statsList}>
                         <li className={styles.statItem}>
-                            <span className={styles.statValue}>80+</span>
+                            <span className={styles.statValue}>20+</span>
                             <span className={styles.divider}></span>
                             <span className={styles.statText}>
                                 <span className={styles.statLabel}>Trusted Collaborations</span>
@@ -106,7 +106,7 @@ export default function Hero() {
                             </span>
                         </li>
                         <li className={styles.statItem}>
-                            <span className={styles.statValue}>120+</span>
+                            <span className={styles.statValue}>20+</span>
                             <span className={styles.divider}></span>
                             <span className={styles.statText}>
                                 <span className={styles.statLabel}>Projects Delivered</span>

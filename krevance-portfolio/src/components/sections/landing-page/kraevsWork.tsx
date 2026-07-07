@@ -21,12 +21,11 @@ interface ProjectItem {
 const PROJECTS: ProjectItem[] = [
 	{
 		id: 1,
-		title: "Online Examination with Proctoring System",
+		title: "iQueue",
 		description:
-			"A web-based examination platform with automated proctoring features to ensure academic integrity.",
-		image: OLImage,
-		githubLink:
-			"https://github.com/karinaonly/Online-Examination-with-Proctoring-System",
+			"iQueue is an integrated, smart queue management system designed to transition the Registrar and Accounting Offices  from manual, paper-based workflows into an automated, digital environment.",
+		image: IQueueImage,
+		githubLink: "https://github.com/Naksu14/iQueue_Web-System",
 	},
 	{
 		id: 2,
@@ -45,14 +44,16 @@ const PROJECTS: ProjectItem[] = [
 		image: DeliveryLogsImage,
 		githubLink: "https://github.com/Naksu14/Delivery-Logs-System",
 	},
-	{
+		{
 		id: 4,
-		title: "iQueue",
+		title: "Online Examination with Proctoring System",
 		description:
-			"iQueue is an integrated, smart queue management system designed to transition the Registrar and Accounting Offices  from manual, paper-based workflows into an automated, digital environment.",
-		image: IQueueImage,
-		githubLink: "https://github.com/Naksu14/iQueue_Web-System",
+			"A web-based examination platform with automated proctoring features to ensure academic integrity.",
+		image: OLImage,
+		githubLink:
+			"https://github.com/karinaonly/Online-Examination-with-Proctoring-System",
 	},
+	
 ];
 
 const VISIBLE_COUNT = 3;
