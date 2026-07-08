@@ -138,7 +138,7 @@ const wrapper = (content: string) => `
                     KREVANCE
                   </td>
                   <td align="right" style="color:${theme.border};font-size:12px;">
-                    Website &amp; App Development
+                    Website &amp; App Development Company
                   </td>
                 </tr>
               </table>
@@ -283,7 +283,7 @@ function buildUserHtml(formData: any, cost: any, meeting: string) {
 
   const content = `
     <p style="margin:0 0 8px;text-align:center;color:${theme.muted};font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">
-      KREVANCE — Website &amp; App Development Company
+      KREVANCE — Website &amp; App Development
     </p>
 
     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
