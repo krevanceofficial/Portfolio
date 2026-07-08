@@ -54,7 +54,7 @@ export const budgetOptionsByProjectType: Record<number, BudgetOption[]> = {
 export const addOnsByProjectType: Record<number, AddOn[]> = {
   // 1 — System Development
   1: [
-    { id: 'sys-domain',          name: 'Website Domain (.com)',           price: 1100, priceLabel: '₱800 per year' },
+    { id: 'sys-domain',          name: 'Website Domain (.com)',           price: 800, priceLabel: '₱800 per year' },
     { id: 'sys-mobile-platform', name: 'Platform | Mobile Application',   price: 5000, priceLabel: 'Starting at ₱5,000' },
     { id: 'sys-desktop-platform',name: 'Platform | Desktop Application',  price: 5000, priceLabel: 'Starting at ₱5,000' },
     { id: 'sys-playstore',       name: 'Application | Google Playstore',  price: 1000 },
