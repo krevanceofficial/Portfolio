@@ -312,7 +312,7 @@ function buildUserHtml(formData: any, cost: any, meeting: string) {
       </p>
       <p style="color:${theme.primary};margin:16px auto 0;font-size:15px;font-weight:600;">
         You can expect to hear back from us within
-        <span style="background:${theme.successBg};padding:4px 10px;border-radius:6px;">24 to 48 hours</span>
+        <span style="background:${theme.successBg};padding:2px 10px;border-radius:6px;">24 to 48 hours</span>
       </p>
     </div>
 
