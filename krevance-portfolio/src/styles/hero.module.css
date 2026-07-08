@@ -89,6 +89,13 @@
   max-width: 70%;
 }
 
+.ctaArrow {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  transform: rotate(180deg);
+}
+
 .cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 0 rgba(42, 60, 47, 0.2);

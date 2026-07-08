@@ -120,8 +120,11 @@
 }
 
 .listArrow {
-  font-size: 1rem;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
   opacity: 0.6;
+  transform: rotate(180deg);
 }
 
 .detailCard {
@@ -235,7 +238,10 @@
 }
 
 .detailButtonArrow {
-  font-size: 1rem;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  transform: rotate(180deg);
 }
 
 @media (max-width: 900px) {

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from "../../../styles/whatWeDo.module.css";
 import Link from "next/link";
+import arrowIcon from "../../icons/Generic ICONS/icon_green-arrow.png";
 
 interface ServiceItem {
   id: string;
@@ -128,7 +130,14 @@ export default function WhatWeDo() {
                   <span className={styles.listTitle}>{service.listTitle}</span>
                   <span className={styles.listSubtitle}>{service.listSubtitle}</span>
                 </span>
-                <span className={styles.listArrow}>&gt;</span>
+                <Image
+                  src={arrowIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.listArrow}
+                  width={18}
+                  height={18}
+                />
               </button>
             ))}
           </div>
@@ -158,7 +167,14 @@ export default function WhatWeDo() {
 
             <Link href="/contactus" className={styles.detailButton}>
               Get Started
-              <span className={styles.detailButtonArrow}>&gt;</span>
+              <Image
+                src={arrowIcon}
+                alt=""
+                aria-hidden="true"
+                className={styles.detailButtonArrow}
+                width={18}
+                height={18}
+              />
             </Link>
           </article>
         </div>

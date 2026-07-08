@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import styles from "../../../styles/hero.module.css";
+import arrowIcon from "../../icons/Generic ICONS/icon_green-arrow.png";
 
 // I-import ang lahat ng mga logos rito:
 import logoHolder from "../../icons/logoholder.png"; 
@@ -73,7 +74,15 @@ export default function Hero() {
                     {/* Lalagyan ng Button Group para magkatabi sila */}
                     <div className={styles.ctaGroup}>
                         <Link className={styles.cta} href="/contactus">
-                            Let's Build Together &gt;
+                            Let's Build Together
+                            <Image
+                                src={arrowIcon}
+                                alt=""
+                                aria-hidden="true"
+                                className={styles.ctaArrow}
+                                width={18}
+                                height={18}
+                            />
                         </Link>
                         
                         <div className={styles.secondaryLink}>
