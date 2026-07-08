@@ -54,7 +54,7 @@ export const budgetOptionsByProjectType: Record<number, BudgetOption[]> = {
 export const addOnsByProjectType: Record<number, AddOn[]> = {
   // 1 — System Development
   1: [
-    { id: 'sys-domain',          name: 'Website Domain (.com)',           price: 1100, priceLabel: '₱1,100 per year' },
+    { id: 'sys-domain',          name: 'Website Domain (.com)',           price: 1100, priceLabel: '₱800 per year' },
     { id: 'sys-mobile-platform', name: 'Platform | Mobile Application',   price: 5000, priceLabel: 'Starting at ₱5,000' },
     { id: 'sys-desktop-platform',name: 'Platform | Desktop Application',  price: 5000, priceLabel: 'Starting at ₱5,000' },
     { id: 'sys-playstore',       name: 'Application | Google Playstore',  price: 1000 },
@@ -102,7 +102,7 @@ export const getBudgetOptions = (projectTypeId: number | null): BudgetOption[] =
 const allBudgetOptions: BudgetOption[] = Object.values(budgetOptionsByProjectType).flat();
 
 export const timelineOptions: TimelineOption[] = [
-  { id: 'asap',      label: 'Priority Project', multiplier: 1.35, multiplierLabel: 'Rush (+40%)'    },
+  { id: 'ASAP',      label: 'Priority Project', multiplier: 1.35, multiplierLabel: 'Rush (+40%)'    },
   { id: '1month',    label: 'Within 1 Month', multiplier: 1.15, multiplierLabel: 'Fast (+20%)'    },
   { id: '3months',   label: 'Within 3 Months', multiplier: 1,    multiplierLabel: 'Standard (1x)'  },
   { id: 'flexible',  label: 'Flexible', multiplier: 1,  multiplierLabel: 'Standard (1x)' },
@@ -150,7 +150,7 @@ const allAddOns: AddOn[] = Object.values(addOnsByProjectType).flat();
 
 /** Get a single add-on's price from its id (safe against invalid ids) */
 export const getAddOnPrice = (id: string): number | null =>
-  allAddOns.find((a) => a.id === id)?.price ?? allAddOns.find((a) => a.id === id)?.price ?? null;
+  allAddOns.find((a) => a.id === id)?.price ?? null;
 
 /** Get a single add-on's name from its id */
 export const getAddOnName = (id: string): string =>

@@ -15,7 +15,7 @@ import AddOnsCard from './ui/AddOnsCard';
 import Button from './ui/Button';
 import { useMultiStepForm, clearFormStorage } from './hooks/useMultiStepForm';
 import { AddOn, CostBreakdown, Step } from './types/types';
-import { getBudgetPrice, getAddOns  } from './utils/labels';               // ← ADDED
+import { getBudgetPrice, getAddOns, getAddOnName  } from './utils/labels';               // ← ADDED
 import styles from '../../../styles/contactus.module.css';
 import MobileSummarySheet from './MobileSummarySheet';
 import MobileSummaryBar from './MobileSummaryBar';
@@ -62,7 +62,7 @@ const steps: Step[] = [
 // which is dependent on the selected project type.
 
   const timelineMultiplierMap: Record<string, { multiplier: number; label: string }> = {
-    asap:      { multiplier: 1.35, label: 'Rush (+40%)'    },
+    ASAP:      { multiplier: 1.35, label: 'Rush (+40%)'    },
     '1month':  { multiplier: 1.15, label: 'Fast (+20%)'    },
     '3months': { multiplier: 1,    label: 'Standard (1x)'  },
     flexible:  { multiplier: 1,  label: 'Standard (1x)' }, // ← also fixed duplicate label bug

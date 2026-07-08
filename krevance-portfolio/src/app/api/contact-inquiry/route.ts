@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createEmailClient } from '@opencoredev/email-sdk';
 import { smtp } from '@opencoredev/email-sdk/smtp';
 import { rateLimit } from '../../../lib/rateLimit';
+import { getAddOnName, getBudgetLabel, getGoalLabel, getProjectTypeLabel, getReferralLabel, getStageLabel, getTimelineLabel } from '@/src/components/sections/contactus-page/utils/labels';
 
 const client = createEmailClient({
   adapters: [
@@ -190,7 +191,7 @@ function buildBusinessHtml(formData: any, cost: any, meeting: string) {
     : '—';
 
   const addOns = Array.isArray(formData.addOns) && formData.addOns.length
-    ? formData.addOns.join(', ')
+    ? formData.addOns.map((id: string) => getAddOnName(id)).join(', ')
     : 'None';
 
   const meetingDate = formData.selectedDate
@@ -222,17 +223,17 @@ function buildBusinessHtml(formData: any, cost: any, meeting: string) {
     `)}
 
     ${section('Project Information', `
-      ${row('Project Type', formData.projectType)}
-      ${row('Project Stage', formData.projectStage)}
-      ${row('Primary Goal', formData.primaryGoal)}
+      ${row('Project Type', getProjectTypeLabel(formData.projectType))}
+      ${row('Project Stage', getStageLabel(formData.projectStage))}
+      ${row('Primary Goal', getGoalLabel(formData.primaryGoal))}
       ${row('Project Name', formData.projectName)}
       ${row('Description', formData.projectDescription)}
     `)}
 
     ${section('Scope & Budget', `
-      ${row('Budget Level', formData.budgetLevel)}
-      ${row('Timeline', formData.timeline)}
-      ${row('Referral Source', formData.referral)}
+      ${row('Budget Level', getBudgetLabel(formData.budgetLevel))}
+      ${row('Timeline', getTimelineLabel(formData.timeline))}
+      ${row('Referral Source', getReferralLabel(formData.referral))}
       ${row('Add-ons', addOns)}
     `)}
 
@@ -322,8 +323,8 @@ function buildUserHtml(formData: any, cost: any, meeting: string) {
     </h3>
     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background:${theme.successBg};border-radius:8px;overflow:hidden;border:1px solid ${theme.divider};">
       ${row('Project Name', formData.projectName)}
-      ${row('Project Type', formData.projectType)}
-      ${row('Timeline', formData.timeline)}
+      ${row('Project Type', getProjectTypeLabel(formData.projectType))}
+      ${row('Timeline', getTimelineLabel(formData.timeline))}
       ${row('Estimated Starts At', cost?.startsAt ? `<strong style="color:${theme.primary};font-size:16px;">₱${cost.startsAt.toLocaleString()}</strong>` : '—', true)}
     </table>
 
