@@ -35,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${zenDots.variable} antialiased`}
       >
-        <Nav />
+        {/* <Nav /> */}
         {children}
         <Footer />
       </body>

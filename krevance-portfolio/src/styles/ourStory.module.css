@@ -106,6 +106,12 @@
   transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
 }
 
+.cardIconImage {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
 .card:hover .cardIcon {
   transform: rotate(-6deg) scale(1.04);
   border-color: rgba(47, 61, 49, 0.4);

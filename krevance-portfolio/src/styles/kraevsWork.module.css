@@ -162,13 +162,32 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 .arrowButton:hover {
-  background: #2f3d31;
-  color: #eef1ed;
+  background: rgba(47, 61, 49, 0.08);
   transform: translateY(-1px);
+  border-color: rgba(47, 61, 49, 0.45);
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.arrowIconPrev {
+  transform: rotate(180deg);
+}
+
+.arrowButton:hover .arrowIcon {
+  transform: scale(1.04);
+}
+
+.arrowButton:hover .arrowIconPrev {
+  transform: rotate(180deg) scale(1.04);
 }
 
 .dots {
@@ -278,6 +297,32 @@
   }
 }
 
+@media (max-width: 900px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .headerRight {
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
+    justify-content: flex-start;
+    align-self: stretch;
+    text-align: left;
+  }
+
+  .subtitle {
+    max-width: 100%;
+    text-align: left;
+    margin-top: -1rem;
+    margin-left: 0;
+
+  }
+}
+
 @media (max-width: 760px) {
   .header {
     flex-direction: column;
@@ -286,9 +331,12 @@
   }
 
   .headerRight {
-    justify-content: flex-start;
+    max-width: 100%;
+    width: 100%;
     text-align: left;
-    margin-left: -30;
+    margin-top: 1.5rem;
+    margin-left: 0;
+    padding-left: 0;
   }
 
 
@@ -316,4 +364,38 @@
   .preview img {
     filter: saturate(1) brightness(1) contrast(1);
   }
+}
+
+@media (max-width: 680px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .headerRight {
+    justify-content: flex-start;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .headerRight {
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .subtitle {
+    max-width: 100%;
+  }
+
 }

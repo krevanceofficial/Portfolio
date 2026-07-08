@@ -8,7 +8,7 @@ import Technologies from "../../components/sections/aboutUs-page/technologies";
 export default function AboutUsPage() {
 	return (
 		<main className="min-h-screen">
-			{/* <Nav /> */}
+			<Nav />
 			<AboutUsSection />
 			<OurStory />
 			<TheKraev />

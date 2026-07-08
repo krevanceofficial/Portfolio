@@ -297,6 +297,7 @@
   .heroSection {
     padding: 2.25rem 1rem;
   }
+  
 
   .title {
     /* KORREKSYON: Binigyan natin ng dynamic space imbes na biglang 100% para maganda pa rin ang wrap sa mobile */
@@ -326,6 +327,10 @@
    ========================================================================== */
 @media (max-width: 480px) {
 
+  .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
   .heroInner{
     margin-top: -4rem;
   }
@@ -335,6 +340,7 @@
   }
 
   .subtitle{
+    font-size: 0.75rem;
     margin-top: 10px;
   }
 

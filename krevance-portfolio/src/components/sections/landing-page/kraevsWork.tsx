@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import styles from "../../../styles/kraevsWork.module.css";
+import arrowIcon from "../../icons/Generic ICONS/icon_green-arrow.png";
 import IQueueImage from "../../images/iQueue.png";
 import DeliveryLogsImage from "../../images/DeliveryLogs.png";
 import OLImage from "../../images/Online-exam.jpg";
@@ -153,19 +154,33 @@ export default function KraevsWork() {
 						<button
 							type="button"
 							className={styles.arrowButton}
-							onClick={handlePrev}
-							aria-label="Previous projects"
+							onClick={handleNext}
+							aria-label="Next projects"
 						>
-							<ChevronLeft size={18} />
+							<Image
+								src={arrowIcon}
+								alt=""
+								aria-hidden="true"
+								className={styles.arrowIcon}
+								width={18}
+								height={18}
+							/>
 						</button>
 						<button
 							type="button"
 							className={styles.arrowButton}
-							onClick={handleNext}
-							aria-label="Next projects"
+							onClick={handlePrev}
+							aria-label="Previous projects"
 						>
-							<ChevronRight size={18} />
-						</button>
+							<Image
+								src={arrowIcon}
+								alt=""
+								aria-hidden="true"
+								className={`${styles.arrowIcon} ${styles.arrowIconPrev}`}
+								width={18}
+								height={18}
+							/>
+						</button>	
 					</div>
 
 					<div className={styles.dots}>

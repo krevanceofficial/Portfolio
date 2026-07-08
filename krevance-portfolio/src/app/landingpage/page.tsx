@@ -9,6 +9,7 @@ import Footer from "../../components/sections/footer";
 export default function ServicesPage() {
   return (
     <main className="min-h-screen dot">
+      <Nav />
         <Hero />
         {/*  About Overview Content */}
         {/* <AboutOverview /> */}

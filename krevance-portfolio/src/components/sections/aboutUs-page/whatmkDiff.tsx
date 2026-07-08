@@ -1,33 +1,50 @@
 "use client";
 
 import { cubicBezier, motion } from "framer-motion";
+import Image from "next/image";
 import styles from "../../../styles/whatmkDiff.module.css";
+
+import clientCenteredIcon from "../../icons/Why choose us ICON/icon_client-centered.png";
+import creativeIcon from "../../icons/Why choose us ICON/icon_creative.png";
+import endToEndIcon from "../../icons/Why choose us ICON/icon_endtoend.png";
+import startupIcon from "../../icons/Why choose us ICON/icon_startup.png";
+import transparentIcon from "../../icons/Why choose us ICON/icon_transparent.png";
 
 const FEATURES = [
   {
     id: "01",
     title: "Startup-Friendly Customization",
     text: "We design packages that fit the needs of startups - balancing budget, function, and timeline without compromising quality.",
+    icon: startupIcon,
+    alt: "Startup-friendly customization icon",
   },
   {
     id: "02",
     title: "End-To-End Service Model",
     text: "From concept to launch, we manage every stage - giving clients a seamless and worry-free development journey.",
+    icon: endToEndIcon,
+    alt: "End-to-end service model icon",
   },
   {
     id: "03",
     title: "Creative-Functional Balance",
     text: "Each design combines visual creativity with strong usability - ensuring experiences that are both engaging and practical.",
+    icon: creativeIcon,
+    alt: "Creative-functional balance icon",
   },
   {
     id: "04",
     title: "Transparent Communication",
     text: "Clients receive consistent updates, progress reports, and clear timelines - ensuring trust and accountability at every step.",
+    icon: transparentIcon,
+    alt: "Transparent communication icon",
   },
   {
     id: "05",
     title: "Client-Centered Approach",
     text: "Every solution is crafted with the client’s vision in mind - balancing functionality with brand personality.",
+    icon: clientCenteredIcon,
+    alt: "Client-centered approach icon",
   },
 ];
 
@@ -98,7 +115,15 @@ export default function WhatMakesDifferent() {
           {FEATURES.map((feature) => (
             <motion.article key={feature.id} className={styles.card} variants={cardItem}>
               <span className={styles.cardNumber}>{feature.id}</span>
-              <span className={styles.cardIcon} aria-hidden="true">✦</span>
+              <span className={styles.cardIcon} aria-hidden="true">
+                <Image
+                  src={feature.icon}
+                  alt={feature.alt}
+                  className={styles.cardIconImage}
+                  width={20}
+                  height={20}
+                />
+              </span>
               <h3 className={styles.cardTitle}>{feature.title}</h3>
               <p className={styles.cardText}>{feature.text}</p>
             </motion.article>

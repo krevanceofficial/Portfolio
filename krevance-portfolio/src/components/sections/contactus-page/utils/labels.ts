@@ -102,7 +102,7 @@ export const getBudgetOptions = (projectTypeId: number | null): BudgetOption[] =
 const allBudgetOptions: BudgetOption[] = Object.values(budgetOptionsByProjectType).flat();
 
 export const timelineOptions: TimelineOption[] = [
-  { id: 'asap',      label: 'ASAP (Priority Project)', multiplier: 1.35, multiplierLabel: 'Rush (+40%)'    },
+  { id: 'asap',      label: 'Priority Project', multiplier: 1.35, multiplierLabel: 'Rush (+40%)'    },
   { id: '1month',    label: 'Within 1 Month', multiplier: 1.15, multiplierLabel: 'Fast (+20%)'    },
   { id: '3months',   label: 'Within 3 Months', multiplier: 1,    multiplierLabel: 'Standard (1x)'  },
   { id: 'flexible',  label: 'Flexible', multiplier: 1,  multiplierLabel: 'Standard (1x)' },

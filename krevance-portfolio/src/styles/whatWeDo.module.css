@@ -238,14 +238,18 @@
   font-size: 1rem;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 900px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .headerNote {
+    width: 100%;
+    max-width: 100%;
     text-align: left;
+    margin-top: -1rem;
+    margin-left: 0;
+    padding-left: 0;
   }
 
   .body {
@@ -262,14 +266,22 @@
   }
 }
 
+
 @media (max-width: 640px) {
   .listItem {
     padding: 0.85rem 1rem;
   }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .headerNote {
-    justify-content: flex-start;
+    width: 100%;
+    max-width: 100%;
     text-align: left;
-    margin-left: -30;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 0.5rem;
 
   }
 
@@ -283,8 +295,18 @@
 }
 @media (max-width: 480px) {
   .title {
-    max-width: 100%; /* Sa napakaliit na screen dito na siya pwedeng mag-fluid full width */
+    max-width: 100%;
     margin-bottom: -3rem;
+  }
+  .headerNote {
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+    margin-left: 0;
+    margin-top: 2rem;
+    padding-left: 0;
+
   }
 
 }

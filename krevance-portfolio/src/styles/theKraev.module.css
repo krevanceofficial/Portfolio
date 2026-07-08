@@ -190,6 +190,7 @@
     grid-template-columns: 1fr;
   }
 
+
   .card {
     grid-template-columns: 120px 1fr;
     min-height: 0;

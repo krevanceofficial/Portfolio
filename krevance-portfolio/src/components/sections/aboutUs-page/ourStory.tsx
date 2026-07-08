@@ -1,7 +1,36 @@
 "use client";
 
 import { cubicBezier, motion } from "framer-motion";
+import Image from "next/image";
 import styles from "../../../styles/ourStory.module.css";
+
+import missionIcon from "../../icons/Our Story ICONS/icon_mission.png";
+import coreValuesIcon from "../../icons/Our Story ICONS/icon_core-values.png";
+import visionIcon from "../../icons/Our Story ICONS/icon_vision.png";
+
+const STORY_CARDS = [
+  {
+    title: "Mission",
+    icon: missionIcon,
+    alt: "Mission icon",
+    text:
+      "Krevance is committed to creating accessible and innovative digital solutions that combine creativity, functionality, and strategy. Through collaboration and user-focused development, the team aims to help businesses solve challenges and achieve their goals.",
+  },
+  {
+    title: "Core Values",
+    icon: coreValuesIcon,
+    alt: "Core values icon",
+    text:
+      "Krevance is guided by creativity, innovation, professionalism, and teamwork. We focus on understanding client needs, delivering reliable solutions, and building long-term partnerships through trust, quality, and continuous growth.",
+  },
+  {
+    title: "Vision",
+    icon: visionIcon,
+    alt: "Vision icon",
+    text:
+      "To be a trusted digital partner for startups and businesses, helping turn ideas into meaningful digital experiences that inspire growth, connection, and long-term success.",
+  },
+];
 
 export default function OurStory() {
   const headerContainer = {
@@ -88,35 +117,21 @@ export default function OurStory() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
         >
-          <motion.article className={styles.card} variants={cardItem}>
-            <span className={styles.cardIcon} aria-hidden="true">
-              ✦
-            </span>
-            <h3 className={styles.cardTitle}>Mission</h3>
-            <p className={styles.cardText}>
-              Krevance is committed to creating accessible and innovative digital solutions that combine creativity, functionality, and strategy. Through collaboration and user-focused development, the team aims to help businesses solve challenges and achieve their goals.
-            </p>
-          </motion.article>
-
-          <motion.article className={styles.card} variants={cardItem}>
-            <span className={styles.cardIcon} aria-hidden="true">
-              ✦
-            </span>
-            <h3 className={styles.cardTitle}>Core Values</h3>
-            <p className={styles.cardText}>
-              Krevance is guided by creativity, innovation, professionalism, and teamwork. We focus on understanding client needs, delivering reliable solutions, and building long-term partnerships through trust, quality, and continuous growth.
-            </p>
-          </motion.article>
-
-          <motion.article className={styles.card} variants={cardItem}>
-            <span className={styles.cardIcon} aria-hidden="true">
-              ✦
-            </span>
-            <h3 className={styles.cardTitle}>Vision</h3>
-            <p className={styles.cardText}>
-              To be a trusted digital partner for startups and businesses, helping turn ideas into meaningful digital experiences that inspire growth, connection, and long-term success.
-            </p>
-          </motion.article>
+          {STORY_CARDS.map((card) => (
+            <motion.article key={card.title} className={styles.card} variants={cardItem}>
+              <span className={styles.cardIcon} aria-hidden="true">
+                <Image
+                  src={card.icon}
+                  alt={card.alt}
+                  className={styles.cardIconImage}
+                  width={22}
+                  height={22}
+                />
+              </span>
+              <h3 className={styles.cardTitle}>{card.title}</h3>
+              <p className={styles.cardText}>{card.text}</p>
+            </motion.article>
+          ))}
         </motion.div>
       </div>
     </section>

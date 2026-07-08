@@ -265,7 +265,7 @@ export default function Nav() {
     if (isMobile) return;
 
     const onScroll = () => {
-      const scrolled = window.scrollY > 50;
+      const scrolled = window.scrollY > 200;
       setIsScrolled(scrolled);
       if (!scrolled) setForceExpand(false);
     };

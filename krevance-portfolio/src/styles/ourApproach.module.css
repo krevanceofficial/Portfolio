@@ -127,14 +127,23 @@
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 900px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
   }
+  .title {
+    max-width: 100%;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+  }
 
   .subtitle {
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
+    margin-top: -1rem;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
   }
 
   .steps {
@@ -143,6 +152,10 @@
 }
 
 @media (max-width: 560px) {
+    .subtitle {
+  margin-top: 0.5rem;
+  }
+
   .steps {
     grid-template-columns: 1fr;
   }
@@ -150,14 +163,17 @@
 
 @media (max-width: 480px) {
   .title {
-    max-width: 100%; /* Sa napakaliit na screen dito na siya pwedeng mag-fluid full width */
+    max-width: 100%;
     margin-bottom: -1.5rem;
   }
 
   .subtitle {
+    width: 100%;
+    max-width: 100%;
     justify-content: flex-start;
     text-align: left;
-    margin-left: 1;
+    margin-left: 0;
+    padding-left: 0;
 
   }
 
