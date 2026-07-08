@@ -62,7 +62,7 @@ const steps: Step[] = [
 // which is dependent on the selected project type.
 
   const timelineMultiplierMap: Record<string, { multiplier: number; label: string }> = {
-    ASAP:      { multiplier: 1.35, label: 'Rush (+40%)'    },
+    asap:      { multiplier: 1.35, label: 'Rush (+40%)'    },
     '1month':  { multiplier: 1.15, label: 'Fast (+20%)'    },
     '3months': { multiplier: 1,    label: 'Standard (1x)'  },
     flexible:  { multiplier: 1,  label: 'Standard (1x)' }, // ← also fixed duplicate label bug
