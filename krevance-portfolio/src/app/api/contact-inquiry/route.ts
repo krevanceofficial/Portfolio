@@ -63,7 +63,7 @@ export async function POST(req: Request) {
 
     await client.send({
       from: process.env.SMTP_FROM!,
-      to: process.env.SMTP_FROM!,
+      to: process.env.SMTP_TO!,
       replyTo: formData.email,
       subject: `New Project Inquiry — ${formData.fullName}`,
       html: businessHtml,
