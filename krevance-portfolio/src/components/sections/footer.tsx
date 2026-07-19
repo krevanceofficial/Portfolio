@@ -47,13 +47,13 @@ export default function Footer() {
                         {/* 2. Phone Link gamit ang tel: */}
                         <li>
                             <a 
-                                href="tel:+63919587721" 
+                                href="tel:+639289161745" 
                                 className={styles.contactLink}
                             >
                                 <span className={styles.contactIcon} aria-hidden="true">
                                     <Phone size={14} />
                                 </span>
-                                +6391 958 7721
+                                +63928 916 1745
                             </a>
                         </li>
 
