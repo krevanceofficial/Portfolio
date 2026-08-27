@@ -7,8 +7,8 @@ import styles from "../../../styles/kraevsWork.module.css";
 import arrowIcon from "../../icons/Generic ICONS/icon_green-arrow.png";
 import IQueueImage from "../../images/iQueue.png";
 import DeliveryLogsImage from "../../images/DeliveryLogs.png";
-import OLImage from "../../images/Online-exam.jpg";
-import OmegaImage from "../../images/omega-ecom.jpg";
+import OLImage from "../../images/Online-exam.png";
+import OmegaImage from "../../images/omega-ecom.png";
 
 interface ProjectItem {
 	id: number;

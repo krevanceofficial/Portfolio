@@ -18,82 +18,138 @@ interface ServiceItem {
 
 const SERVICES: ServiceItem[] = [
   {
-    id: "system-development",
+    id: "business-operations-system",
     number: "01",
-    listTitle: "System Development",
-    listSubtitle: "Build smarter business operations",
-    detailTitle: "System Development",
-    detailTagline: "Build smarter business operations",
-    price: "₱15,000",
+    listTitle: "Business Operations System",
+    listSubtitle: "Manage your daily operations",
+    detailTitle: "Business Operations System",
+    detailTagline: "Manage your daily operations",
+    price: "\u20b120,000",
     description:
-      "Create custom systems and web applications designed to simplify workflows, improve productivity and support business growth.",
+      "A centralized system for organizing business records, tasks, staff activity, and daily operations in one place.",
     features: [
-      "Custom web systems",
-      "Admin dashboard",
-      "User management",
-      "Process automation",
-      "Business reports",
-      "Secure access",
+      "Custom Admin Dashboard",
+      "Task and Record Management",
+      "Single Admin Account",
+      "Basic Activity Summary",
+      "Responsive Interface",
+      "System Security Setup",
     ],
   },
   {
-    id: "ecommerce-solutions",
+    id: "inventory-management-system",
     number: "02",
-    listTitle: "E-Commerce Solutions",
-    listSubtitle: "Sell online with confidence",
-    detailTitle: "E-Commerce Solutions",
-    detailTagline: "Sell online with confidence",
-    price: "₱50,000",
+    listTitle: "Inventory Management System",
+    listSubtitle: "Track stock with confidence",
+    detailTitle: "Inventory Management System",
+    detailTagline: "Track stock with confidence",
+    price: "\u20b120,000",
     description:
-      "Complete online selling solutions with payment integration, inventory management, and customer-focused features.",
+      "A dedicated system for managing products, monitoring stock levels, and keeping inventory records organized.",
     features: [
-      "Online payments",
-      "Product management",
-      "Inventory tracking",
-      "Customer dashboard",
-      "Sales reports",
-      "Live chat support",
+      "Product Catalog Management",
+      "Stock Level Tracking",
+      "Low Stock Alerts",
+      "Basic Admin Dashboard",
+      "Single User Access",
+      "System Security Setup",
     ],
   },
   {
-    id: "branding-creative",
+    id: "ecommerce-website",
     number: "03",
-    listTitle: "Branding & Digital Creative",
-    listSubtitle: "Build a brand people remember",
-    detailTitle: "Branding & Digital Creative",
-    detailTagline: "Build a brand people remember",
-    price: "₱2,500",
+    listTitle: "E-commerce Website",
+    listSubtitle: "Sell your products online",
+    detailTitle: "E-commerce Website",
+    detailTagline: "Sell your products online",
+    price: "\u20b155,000",
     description:
-      "Create a professional and consistent visual identity that strengthens your brand and builds customer trust.",
+      "A complete online store where customers can browse, order, and pay while your business manages products and orders more efficiently.",
     features: [
-      "Logo design",
-      "Brand identity",
-      "Color palette",
-      "Typography selection",
-      "Marketing materials",
-      "Brand guidelines",
+      "Unlimited Product Listings",
+      "Customer Accounts",
+      "Inventory Management",
+      "Promo and Discount System",
+      "Live Chat Integration",
+      "SEO Product Setup",
     ],
   },
   {
-    id: "website-maintenance",
+    id: "portfolio-website",
     number: "04",
-    listTitle: "Website Maintenance & Care",
-    listSubtitle: "Always online, always updated",
-    detailTitle: "Website Maintenance & Care",
-    detailTagline: "Always online, always updated",
-    price: "₱3,000 / Month",
+    listTitle: "Portfolio Website",
+    listSubtitle: "Showcase your work online",
+    detailTitle: "Portfolio Website",
+    detailTagline: "Showcase your work online",
+    price: "\u20b110,000",
     description:
-      "Keep your website secure, updated, and running smoothly while you focus on growing your business.",
+      "A clean professional website for presenting your work, services, or business to potential clients and partners.",
     features: [
-      "Website monitoring",
-      "Security checks",
-      "Backup management",
-      "Content updates",
-      "Technical support",
-      "Performance maintenance",
+      "Custom One-Page Design",
+      "Up to 5 Sections",
+      "Contact Form",
+      "Mobile Responsive Design",
+      "Basic SEO Setup",
+      "Website Security Setup",
+    ],
+  },
+  {
+    id: "digital-invitation-website",
+    number: "05",
+    listTitle: "Digital Invitation Website",
+    listSubtitle: "Make your event easy to share",
+    detailTitle: "Digital Invitation Website",
+    detailTagline: "Make your event easy to share",
+    price: "\u20b15,000",
+    description:
+      "A personalized online invitation that brings your event details together in one accessible and mobile-friendly page.",
+    features: [
+      "Custom One-Page Invitation Design",
+      "Event Details Section",
+      "List of Attendees",
+      "Mobile Responsive Design",
+      "1 Revision Round",
+    ],
+  },
+  {
+    id: "branding-creative-design",
+    number: "06",
+    listTitle: "Branding and Creative Design",
+    listSubtitle: "Build a consistent brand identity",
+    detailTitle: "Branding and Creative Design",
+    detailTagline: "Build a consistent brand identity",
+    price: "\u20b13,000",
+    description:
+      "A creative package that helps your business build a professional and consistent identity across its essential brand materials.",
+    features: [
+      "Logo Design",
+      "Brand Color Palette",
+      "Typography Selection",
+      "Social Media Profile Kit",
+      "1 Revision Round",
+    ],
+  },
+  {
+    id: "system-maintenance-care-plan",
+    number: "07",
+    listTitle: "System Maintenance and Care Plan",
+    listSubtitle: "Keep your website running smoothly",
+    detailTitle: "System Maintenance and Care Plan",
+    detailTagline: "Keep your website running smoothly",
+    price: "\u20b11,500 / Monthly | \u20b115,000 / Yearly",
+    description:
+      "Ongoing website support that handles common technical issues and helps keep your delivered system reliable.",
+    features: [
+      "Bug Fixes",
+      "Password Resets",
+      "Scope-Related Fixes",
+      "Database Issue Resolution",
+      "Login and Authentication Fixes",
+      "Minor UI Fixes",
     ],
   },
 ];
+
 export default function WhatWeDo() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeService = SERVICES[activeIndex];
@@ -107,7 +163,7 @@ export default function WhatWeDo() {
             <h2 className={styles.title}>What We Do?</h2>
           </div>
           <p className={styles.headerNote}>
-            Five focused services built to cover every dimension of your digital
+            Seven focused services built to cover every dimension of your digital
             growth, from first idea to long-term success.
           </p>
         </div>
@@ -126,7 +182,9 @@ export default function WhatWeDo() {
                 <span className={styles.listNumber}>{service.number}</span>
                 <span className={styles.listText}>
                   <span className={styles.listTitle}>{service.listTitle}</span>
-                  <span className={styles.listSubtitle}>{service.listSubtitle}</span>
+                  <span className={styles.listSubtitle}>
+                    {service.listSubtitle}
+                  </span>
                 </span>
                 <span className={styles.listArrow}>&gt;</span>
               </button>
@@ -145,7 +203,9 @@ export default function WhatWeDo() {
             <p className={styles.detailPriceLabel}>INVESTMENT STARTS AT</p>
             <p className={styles.detailPrice}>{activeService.price}</p>
 
-            <p className={styles.detailDescription}>{activeService.description}</p>
+            <p className={styles.detailDescription}>
+              {activeService.description}
+            </p>
 
             <div className={styles.detailFeatures}>
               {activeService.features.map((feature) => (

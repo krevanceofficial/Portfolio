@@ -80,7 +80,7 @@ export default function AboutUsSection() {
           viewport={{ once: true, amount: 0.6 }}
         >
           <motion.p className={styles.eyebrow} variants={fadeUp}>
-            About Us — EST. 2026
+            About Us — EST. 2025
           </motion.p>
           <motion.h1 className={styles.title} variants={fadeUp}>
             <motion.span className={styles.titleTop} variants={titleTop}>
