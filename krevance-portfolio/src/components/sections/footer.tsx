@@ -82,7 +82,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.bottomBar}>
-                <p>© 2026 Krevance. All rights reserved.</p>
+                <p>© 2025 Krevance. All rights reserved.</p>
                 <p>Designed & Built with by Krevance</p>
             </div>
         </footer>

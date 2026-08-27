@@ -92,17 +92,8 @@ export default function TheKraev() {
     },
   };
 
-  const backgroundDrift = {
-    backgroundPosition: ["0px 0px", "24px 24px", "0px 0px"],
-    transition: {
-      duration: 18,
-      ease: cubicBezier(0.42, 0, 0.58, 1),
-      repeat: Infinity,
-    },
-  };
-
   return (
-    <motion.section className={styles.section} animate={backgroundDrift}>
+    <motion.section className={styles.section}>
       <div className={styles.inner}>
         <motion.div
           className={styles.header}
